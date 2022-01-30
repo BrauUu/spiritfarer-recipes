@@ -1,0 +1,58 @@
+@font-face {
+  font-family: 'VenturisSansADFEx-Bold';
+  src: url('../../../public/fonts/VenturisSansADFEx-Bold.ttf.woff');
+}
+* {
+  margin: 0;
+  font-family: 'VenturisSansADFEx-Bold';
+  color: rgb(250, 248, 108);
+}
+.div-app{
+  min-height: 100vh;
+  background: linear-gradient(rgb(6,	49,	65), rgb(31,	117,	114));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app-main  {
+
+  display: flex;
+  flex-direction: row;
+
+  width: 800px;
+  height: 600px;
+  
+  background: linear-gradient(rgba(6,	49,	65, 0.1), rgba(31,	117,	114, 0.1));
+  box-shadow: 0 8px 32px 0 rgba(248, 245, 75, 0.37);
+  backdrop-filter: blur( 2px );
+  -webkit-backdrop-filter: blur( 2px );
+  border-radius: 10px;
+  border: 2px solid rgba(248, 245, 75, 0.37 );
+}
+.app-left, .app-right {
+  height: calc(100% - 20px);
+  width: 50%;
+}
+.app-left {
+  
+  
+}
+.app-right {
+  background-color: rgba(16,59,72,255);
+  margin: 10px;
+  border-radius: 10px;
+  
+}
+.app-content {
+  display: flex;
+  flex-direction: row;
+}
+.app-content-border-top {
+  height: 1px;
+  width: 100%;
+  background: rgb(9,57,72);
+  background: linear-gradient(90deg, rgba(9,57,72,1) 15%, rgba(255,215,0,1) 50%, rgba(9,57,72,1) 85%);
+}
+.app-header {
+  margin: 15px;
+}
