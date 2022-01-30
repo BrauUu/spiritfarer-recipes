@@ -1,0 +1,41 @@
+.dish-details-div{
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px 0px 20px 0px;
+  text-shadow: 1px 1px 10px rgb(20, 20, 20);
+}
+.dish-details-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  color: rgba(221,215,181,255);
+}
+.dish-name-div h2{
+  font-size: 40px;
+  font-weight: 400;
+  color: rgb(253, 251, 143);
+}
+.dish-image-div img{
+  width: 150px;
+}
+.dish-details-content{
+  color: rgba(221,215,181,255);
+  font-size: 28px;
+}
+.dish-other-details-div{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.dish-description-div{
+  margin: 12px 0px 3px 0px;
+}
+.highlighted{
+  color: rgb(226, 164, 48)
+}

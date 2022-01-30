@@ -1,15 +1,15 @@
-.dish{
+.dish-div{
   width: 100px;
   margin: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-img:hover {
+.dish-image:hover {
   background-color: rgb(250, 248, 108);
   box-shadow: 0 8px 32px 0 rgba(248, 245, 75, 0.37);
   border-radius: 100%;
 }
-img {
+.dish-image {
   width: 80%;
 }

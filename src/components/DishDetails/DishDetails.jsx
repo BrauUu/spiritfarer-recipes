@@ -1,10 +1,43 @@
 import React from "react";
 
-export default () => {
+import Line from "../Line/Line";
+import Ingredient from "../Ingredient/Ingredient";
 
-  return(
-    <>
-      
-    </>
+import './DishDetails.css'
+
+export default props => {
+
+  const selectedDish = props.selectedDish
+
+  return (
+    <div className="dish-details-div">
+      <div className="dish-details-header">
+        <div className="dish-image-div">
+          <img src={selectedDish.src} />
+        </div>
+        <div className="dish-name-div">
+          <h2>{selectedDish.name}</h2>
+        </div>
+      </div>
+      <Line backgroundColor="#103B48" highlightedColor="#FAF86C"/>
+      <div className="dish-details-content">
+        <div className="dish-description-div">
+          <span>{selectedDish.description}</span>
+        </div>
+        <div className="dish-other-details-div">
+          <span>
+            Tamanho: <strong className="highlighted">{selectedDish.size.toUpperCase()}</strong>
+          </span>
+          <span>
+            Tipo: <strong className="highlighted">{selectedDish.type.toUpperCase()}</strong>
+          </span>
+          {
+            selectedDish.ingredients.map((ingredient, i) => {
+              return <Ingredient ingredient={ingredient}/>
+            })
+          }
+        </div>
+      </div>
+    </div>
   )
 }

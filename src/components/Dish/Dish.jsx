@@ -14,8 +14,8 @@ export default props => {
   }
 
   return (
-    <div className="dish" onClick={setSelectedDish}>
-      <img src={dish.src}></img>
+    <div className="dish-div" onClick={setSelectedDish}>
+      <img className="dish-image" src={dish.src}></img>
     </div>
   )
 }
