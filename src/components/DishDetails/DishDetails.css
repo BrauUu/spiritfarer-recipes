@@ -1,9 +1,9 @@
 .dish-details-div{
   width: 100%;
-
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   flex-direction: column;
   margin: 20px 0px 20px 0px;
   text-shadow: 1px 1px 10px rgb(20, 20, 20);
@@ -26,7 +26,8 @@
 }
 .dish-details-content{
   color: rgba(221,215,181,255);
-  font-size: 28px;
+  font-size: 30px;
+  font-weight: 200;
 }
 .dish-other-details-div{
   display: flex;
@@ -38,4 +39,11 @@
 }
 .highlighted{
   color: rgb(226, 164, 48)
+}
+.ingredients-div {
+  display: flex;
+  flex-direction: row;
+}
+.ingredients-div .ingredient-div {
+  margin: 0px 15px;
 }

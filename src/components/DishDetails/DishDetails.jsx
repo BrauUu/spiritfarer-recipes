@@ -31,11 +31,13 @@ export default props => {
           <span>
             Tipo: <strong className="highlighted">{selectedDish.type.toUpperCase()}</strong>
           </span>
+          <div className="ingredients-div">
           {
             selectedDish.ingredients.map((ingredient, i) => {
               return <Ingredient ingredient={ingredient}/>
             })
           }
+          </div>
         </div>
       </div>
     </div>

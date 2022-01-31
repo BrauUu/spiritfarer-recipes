@@ -20,5 +20,27 @@ export default [
     ingredients: [
       "Milho"
     ]
-  }
+  },
+  {
+    name: "Curry de Peixe",
+    description: "O cheiro é absolutamente maravilhoso. E por horas também!",
+    src: `${defaultPath}fish_curry.png`,
+    size: "Médio",
+    type: "Exotico",
+    ingredients: [
+      "Peixe",
+      "Grao"
+    ]
+  },
+  {
+    name: "Torta de Frutas Vermelhas",
+    description: "O favorito de um jantar.",
+    src: `${defaultPath}berry_pie.png`,
+    size: "Pequeno",
+    type: "Sobremesa",
+    ingredients: [
+      "Baga",
+      "Farinha"
+    ]
+  },
 ]

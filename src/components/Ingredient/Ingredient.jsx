@@ -2,7 +2,7 @@ import React from "react";
 
 import ingredients from "../../data/ingredients";
 
-
+import './Ingredient.css'
 
 export default props => {
   const ingredient = props.ingredient
@@ -20,7 +20,9 @@ export default props => {
   return(
     <div className="ingredient-div">
       <div className="ingredient-card">
-        <img src={ingredientSrc}></img>
+        <div className="ingredient-card-background">
+          <img src={ingredientSrc}></img>
+        </div>
       </div>
       <span>{ingredient}</span>
     </div>

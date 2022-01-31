@@ -1,0 +1,32 @@
+.ingredient-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ingredient-div span {
+  margin-top: 15px;
+}
+.ingredient-card {
+  border: 1px solid #DADADA;
+  border-radius: 14px;
+  box-shadow: 0 0 8px #252525;
+
+  margin-top: 15px;
+
+  max-height: 100px;
+  max-width: 100px;
+}
+.ingredient-card-background {
+
+  background: rgb(87,152,160);
+  background: radial-gradient(circle, rgba(87,152,160,1) , rgba(16,59,72,1)75%);
+  border-radius: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ingredient-card-background > img {
+  height: 80px;
+}
