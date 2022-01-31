@@ -23,6 +23,9 @@
   background: radial-gradient(circle, rgba(87,152,160,1) , rgba(16,59,72,1)75%);
   border-radius: 100%;
 
+  height: 80px;
+  width: 80px;
+
   display: flex;
   justify-content: center;
   align-items: center;
