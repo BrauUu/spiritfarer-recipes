@@ -1,10 +1,8 @@
-const defaultPath = './img/dishes/'
-
 export default [ 
   {
     name: "Peixe Grelhado",
     description: "Fresquinho do mar e direto para o forno!",
-    src:  `${defaultPath}grilled_fish.png`,
+    src:  `https://images2.imgbox.com/c6/f1/ykLFCV2p_o.png`,
     size: "Pequeno",
     type: "Comum",
     ingredients: [
@@ -14,7 +12,7 @@ export default [
   {
     name: "Pipoca",
     description: "Pipoca! Pipoca! Pipoca!",
-    src: `${defaultPath}popcorn.png`,
+    src: `https://images2.imgbox.com/00/97/cDnwmlBj_o.png`,
     size: "Lanchinho",
     type: "Comum",
     ingredients: [
@@ -24,7 +22,7 @@ export default [
   {
     name: "Curry de Peixe",
     description: "O cheiro é absolutamente maravilhoso. E por horas também!",
-    src: `${defaultPath}fish_curry.png`,
+    src: `https://images2.imgbox.com/60/01/3ajHSLOg_o.png`,
     size: "Médio",
     type: "Exotico",
     ingredients: [
@@ -35,7 +33,7 @@ export default [
   {
     name: "Torta de Frutas Vermelhas",
     description: "O favorito de um jantar.",
-    src: `${defaultPath}berry_pie.png`,
+    src: `https://images2.imgbox.com/27/0c/P5y2POid_o.png`,
     size: "Pequeno",
     type: "Sobremesa",
     ingredients: [
