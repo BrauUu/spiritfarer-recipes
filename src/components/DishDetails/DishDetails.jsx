@@ -8,6 +8,7 @@ import './DishDetails.css'
 export default props => {
 
   const selectedDish = props.selectedDish
+  console.log(selectedDish)
 
   return (
     <div className="dish-details-div">
@@ -34,7 +35,7 @@ export default props => {
           <div className="ingredients-div">
           {
             selectedDish.ingredients.map((ingredient, i) => {
-              return <Ingredient ingredient={ingredient}/>
+              return <Ingredient ingredient={ingredient} key={i}/>
             })
           }
           </div>

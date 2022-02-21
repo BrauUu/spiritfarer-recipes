@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import './App.css'
 
@@ -6,12 +6,20 @@ import Dish from "../Dish/Dish";
 import DishDetails from "../DishDetails/DishDetails";
 import Line from "../Line/Line";
 
-import dishes from '../../data/dishes'
+import api from '../../services/api';
 
 export default () => {
 
   const [detailsIsEnabled, setDetailsIsEnabled] = useState(false)
   const [selectedDish, setSelectedDish] = useState({})
+  const [dishesList, setDishesList] = useState([])
+
+  useEffect(() => {
+    setTimeout( async () => {
+      const response = await api.get("/")
+      setDishesList(response.data)
+    }, 500)
+  }, [])
 
   return (
     <div className="div-app">
@@ -23,7 +31,7 @@ export default () => {
           <Line backgroundColor="#093948" highlightedColor="#FAF86C"/>
           <div className="app-content">
             {
-              dishes.map((dish, i) => {
+              dishesList.map((dish, i) => {
                 return <Dish dish={dish} key={i} setProps={setDetailsIsEnabled} setDish={setSelectedDish} />
               })
             }
@@ -37,7 +45,6 @@ export default () => {
                 :
                 <></>
             }
-
           </div>
         </div>
 
