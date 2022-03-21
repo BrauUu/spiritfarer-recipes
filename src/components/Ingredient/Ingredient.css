@@ -4,15 +4,10 @@
   justify-content: center;
   align-items: center;
 }
-.ingredient-div span {
-  margin-top: 15px;
-}
 .ingredient-card {
   border: 1px solid #DADADA;
   border-radius: 14px;
   box-shadow: 0 0 8px #252525;
-
-  margin-top: 15px;
 
   max-height: 100px;
   max-width: 100px;
@@ -31,5 +26,5 @@
   align-items: center;
 }
 .ingredient-card-background > img {
-  height: 80px;
+  height: 100%
 }
