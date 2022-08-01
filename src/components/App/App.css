@@ -38,8 +38,9 @@ body {
   border-radius: 10px;
 }
 .app-content {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
 }
 .app-header {
   display: flex;

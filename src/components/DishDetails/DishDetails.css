@@ -35,6 +35,9 @@
   font-size: 30px;
   font-weight: 200;
 }
+.dish-description-div {
+  margin: 15px 0px;
+}
 .dish-other-details-div{
   display: flex;
   align-items: center;

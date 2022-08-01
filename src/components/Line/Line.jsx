@@ -7,7 +7,7 @@ export default props => {
 
   const style = {
     background: `linear-gradient(90deg, ${backgroundColor} 5%, ${highlightedColor} 50%, ${backgroundColor} 95%)`,
-    boxShadow: `1px 1px 30px ${highlightedColor}`
+    boxShadow: `1px -10px 30px ${highlightedColor}`
   }
 
   return (

@@ -20,7 +20,7 @@ export default props => {
           <h2>{selectedDish.name}</h2>
         </div>
       </div>
-      <Line backgroundColor="#103B48" highlightedColor="#FAF86C"/>
+      <Line backgroundColor="#153F49" highlightedColor="#FAF86C"/>
       <div className="dish-details-content">
         <div className="dish-description-div">
           <span>{selectedDish.description}</span>

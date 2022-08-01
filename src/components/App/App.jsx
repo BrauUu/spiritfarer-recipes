@@ -27,7 +27,7 @@ export default () => {
         <div className="app-left">
           <div className="app-header">
             <h1>Receitas</h1>
-            <Line backgroundColor="#093948" highlightedColor="#FAF86C"/>
+            <Line backgroundColor="#0C414C" highlightedColor="#FAF86C"/>
           </div>
           <div className="app-content">
             {
