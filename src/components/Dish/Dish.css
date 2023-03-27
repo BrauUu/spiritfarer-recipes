@@ -1,13 +1,13 @@
 .dish-div{
   width: 100%;
-  padding: 10px 0;
+  padding: 16px 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .dish-image:hover {
-  background-color: rgb(250, 248, 108);
-  box-shadow: 0 8px 32px 0 rgba(248, 245, 75, 0.37);
+  background-color: var(--primary-neon);
+  box-shadow: 0 0 32px 1px var(--primary-neon);
   border-radius: 100%;
 }
 .dish-image {

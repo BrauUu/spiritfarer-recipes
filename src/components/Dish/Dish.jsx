@@ -1,21 +1,17 @@
-import React from "react";
-
 import './Dish.css'
 
-export default props => {
+export default function Dish (props) {
 
   const dish = props.dish
-  const setProps = props.setProps
   const setDish = props.setDish
 
   function setSelectedDish() {
-    setProps(true)
     setDish(dish)
   }
 
   return (
     <div className="dish-div" onClick={setSelectedDish}>
-      <img className="dish-image" src={dish.src}></img>
+      <img className="dish-image" alt={'Uma imagem de um delicioso prato de ' + dish.name} src={dish.src}></img>
     </div>
   )
 }

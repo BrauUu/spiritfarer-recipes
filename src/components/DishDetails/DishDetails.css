@@ -1,12 +1,13 @@
 .dish-details-div{
-  width: 100%;
+  width: calc(100% - 40px);
+  padding: 0 20px;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   flex-direction: column;
-  text-shadow: 1px 1px 10px rgb(20, 20, 20);
+  text-shadow: 1px 1px 10px var(--primary-text-shadow);
 }
 .dish-details-header {
   display: flex;
@@ -14,12 +15,12 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-  color: rgba(221,215,181,255);
+  color: var(--primary-text);
 }
 .dish-name-div h2{
   font-size: 2.5rem;
   font-weight: 400;
-  color: rgb(253, 251, 143);
+  color: var(--primary-text);
 }
 
 .dish-image-div {
@@ -31,9 +32,9 @@
 }
 .dish-details-content{
   width: 100%;
-  color: rgba(221,215,181,255);
+  color: var(--secondary-text);
   font-size: 30px;
-  font-weight: 200;
+  font-weight: 300;
 }
 .dish-description-div {
   margin: 15px 0px;
@@ -44,7 +45,7 @@
   flex-direction: column;
 }
 .highlighted{
-  color: rgb(226, 164, 48)
+  color: var(--highlight-text)
 }
 .ingredients-div {
   width: 60%;

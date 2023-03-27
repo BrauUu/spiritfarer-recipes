@@ -1,16 +1,12 @@
-import React from "react";
-
 import './Ingredient.css'
 
-export default props => {
+export default function Ingredient (props){
   const ingredient = props.ingredient
 
   return(
     <div className="ingredient-div">
       <div className="ingredient-card">
-        <div className="ingredient-card-background">
-          <img src={ingredient.src}></img>
-        </div>
+          <img className="ingredient-image" alt={ingredient.name}src={ingredient.src}></img>
       </div>
       <span>{ingredient.name}</span>
     </div>

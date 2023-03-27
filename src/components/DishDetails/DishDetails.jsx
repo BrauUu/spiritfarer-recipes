@@ -5,27 +5,28 @@ import Ingredient from "../Ingredient/Ingredient";
 
 import './DishDetails.css'
 
-export default props => {
+export default function DishDetails(props) {
 
   const selectedDish = props.selectedDish
-  console.log(selectedDish)
 
   return (
     <div className="dish-details-div">
       <div className="dish-details-header">
         <div className="dish-image-div">
-          <img src={selectedDish.src} />
+          <img alt={'Uma imagem de um delicioso prato de ' + selectedDish.name} src={selectedDish.src} />
         </div>
         <div className="dish-name-div">
           <h2>{selectedDish.name}</h2>
         </div>
       </div>
-      <Line backgroundColor="#153F49" highlightedColor="#FAF86C"/>
+      <Line/>
       <div className="dish-details-content">
         <div className="dish-description-div">
           <span>{selectedDish.description}</span>
         </div>
-        <div className="dish-other-details-div">
+        <div className="dish-other-d
+        
+        etails-div">
           <span>
             Tamanho: <strong className="highlighted">{selectedDish.size.toUpperCase()}</strong>
           </span>
