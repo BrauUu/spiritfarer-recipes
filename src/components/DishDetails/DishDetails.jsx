@@ -19,14 +19,12 @@ export default function DishDetails(props) {
           <h2>{selectedDish.name}</h2>
         </div>
       </div>
-      <Line/>
+      <Line />
       <div className="dish-details-content">
         <div className="dish-description-div">
           <span>{selectedDish.description}</span>
         </div>
-        <div className="dish-other-d
-        
-        etails-div">
+        <div className="dish-other-details-div">
           <span>
             Tamanho: <strong className="highlighted">{selectedDish.size.toUpperCase()}</strong>
           </span>
@@ -34,11 +32,11 @@ export default function DishDetails(props) {
             Tipo: <strong className="highlighted">{selectedDish.type.toUpperCase()}</strong>
           </span>
           <div className="ingredients-div">
-          {
-            selectedDish.ingredients.map((ingredient, i) => {
-              return <Ingredient ingredient={ingredient} key={i}/>
-            })
-          }
+            {
+              selectedDish.ingredients.map((ingredient, i) => {
+                return <Ingredient ingredient={ingredient} key={i} />
+              })
+            }
           </div>
         </div>
       </div>

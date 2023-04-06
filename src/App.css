@@ -13,6 +13,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .app-main  {
   display: flex;
   flex-direction: row;
