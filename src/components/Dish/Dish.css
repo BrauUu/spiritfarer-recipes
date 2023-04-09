@@ -4,6 +4,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
 }
 .dish-image:hover {
   background-color: var(--primary-neon);
