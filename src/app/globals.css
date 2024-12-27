@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  font-family: 'Dongle', sans-serif;
+  line-height: 1;
+}
+
+:root {
+  --primary-dark: #063141;
+  --primary-light: #1f7572;
+
+  --primary-neon: #faf86c;
+  --secondary-neon: #DADADA;
+
+  --primary-text: #fdfb8f;
+  --primary-text-shadow: #141414;
+  --secondary-text: #ddd7b5;
+  --highlight-text: #e2a430;
+}
+
+body {
+  background: linear-gradient(var(--primary-dark), var(--primary-light));
+  background-attachment: fixed;
+
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

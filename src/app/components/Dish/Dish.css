@@ -1,0 +1,5 @@
+.dish-image:hover {
+  background-color: var(--primary-neon);
+  box-shadow: 0 0 32px 1px var(--primary-neon);
+  border-radius: 100%;
+}
