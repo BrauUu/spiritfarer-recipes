@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={``}
+        className={defaultFont.className}
       >
         {children}
       </body>

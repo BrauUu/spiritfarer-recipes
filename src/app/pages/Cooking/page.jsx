@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+"use client"
+
+import React, { useState} from "react";
 
 import Loading from "../../components/Loading";
 
 import './style.css';
 
-export default function Cooking({changeActualScreen}) {
+export default function Cooking({ changeActualScreen }) {
 
     const [isLoading, setIsLoading] = useState(false)
 
