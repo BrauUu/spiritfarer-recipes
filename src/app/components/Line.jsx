@@ -1,9 +1,7 @@
 import React from "react";
 
-import './Line.css'
-
 export default function Line(){
   return (
-    <div className="line" ></div>
+    <div className="bg-neon shadow-neon-sm h-[2px] w-full rounded" ></div>
   )
 }

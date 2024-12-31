@@ -4,30 +4,46 @@
 
 * {
   margin: 0;
-  font-family: 'Dongle', sans-serif;
-  line-height: 1;
+  font-family: var(--font-default);
+  line-height: 1.15;
 }
 
 :root {
-  --primary-dark: #063141;
-  --primary-light: #1f7572;
+  --primary-bg: #063141;
+  --secondary-bg: #1f7572;
 
   --primary-neon: #faf86c;
   --secondary-neon: #DADADA;
 
   --primary-text: #fdfb8f;
-  --primary-text-shadow: #141414;
   --secondary-text: #ddd7b5;
   --highlight-text: #e2a430;
 }
 
 body {
-  background: linear-gradient(var(--primary-dark), var(--primary-light));
+  background: linear-gradient(var(--primary-bg), var(--secondary-bg));
   background-attachment: fixed;
 
   height: 100vh;
 
+  font-size: 24px;
+  font-weight: 400;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  color: var(--primary-text);
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
 }

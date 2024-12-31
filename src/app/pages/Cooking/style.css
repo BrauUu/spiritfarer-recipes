@@ -10,7 +10,7 @@
     width: 50vw;
     height: 600px;
 
-    background: linear-gradient(var(--primary-dark), var(--primary-light));
+    background: linear-gradient(var(--primary-bg), var(--secondary-bg));
     box-shadow: 0 8px 32px 0 var(--primary-neon);
     border-radius: 10px;
     border: 2px solid var(--primary-neon);
@@ -30,7 +30,7 @@
     width: 20vw;
     height: 300px;
 
-    background: linear-gradient(var(--primary-dark), var(--primary-light));
+    background: linear-gradient(var(--primary-bg), var(--secondary-bg));
     box-shadow: 0 8px 32px 0 var(--primary-neon);
     border-radius: 10px;
     border: 2px solid var(--primary-neon);

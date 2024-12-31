@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import Loading from "../../components/Loadings/Loading/Loading";
+import Loading from "../../components/Loading";
 
 import './style.css';
 

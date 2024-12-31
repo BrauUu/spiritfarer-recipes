@@ -1,6 +1,0 @@
-.line {
-  background: var(--primary-neon);
-  box-shadow: 0 0 32px 1px var(--primary-neon);
-  height: 2px;
-  width: 100%;
-}
