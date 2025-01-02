@@ -3,6 +3,7 @@ import Image from 'next/image'
 
 import Line from "./Line";
 import Ingredient from "./Ingredient";
+import Title from "./Title";
 
 export default function DishDetails({ selectedDish }) {
   return (
@@ -18,9 +19,8 @@ export default function DishDetails({ selectedDish }) {
           >
           </Image>
         </div>
-        <h2>{selectedDish.name}</h2>
       </div>
-      <Line />
+      <Title type='secondary' text={selectedDish.name}/>
       <div className="flex flex-col gap-y-3 pt-2">
         <div className="">
           <span>{selectedDish.description}</span>

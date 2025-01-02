@@ -2,7 +2,7 @@
 
 import React, { useState} from "react";
 
-import Recipes from "./pages/Recipes/page";
+import Recipes from "./pages/Recipes";
 import Cooking from "./pages/Cooking/page";
 
 export default function App() {

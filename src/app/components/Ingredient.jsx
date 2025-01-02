@@ -12,7 +12,7 @@ export default function Ingredient({ ingredient }) {
             className=''
             width={100}
             height={100}
-            alt={ingredient.name}
+            alt={`Uma imagem de um(a) ${ingredient.name}`}
             src={ingredient.src}
           ></Image>
         </div>
