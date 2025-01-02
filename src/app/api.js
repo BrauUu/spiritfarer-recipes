@@ -1,7 +1,7 @@
-const path = "https://spiritfarer-recipes-api.onrender.com/"
+const url = "https://spiritfarer-recipes-api.onrender.com/"
 
 const getAllRecipes = async function(){
-    return await fetch(path)
+    return await fetch(url)
 }
 
 export default {
