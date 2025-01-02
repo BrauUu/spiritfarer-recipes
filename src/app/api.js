@@ -1,4 +1,4 @@
-const path = "http://localhost:4001/"
+const path = "https://spiritfarer-recipes-api.onrender.com/"
 
 const getAllRecipes = async function(){
     return await fetch(path)
