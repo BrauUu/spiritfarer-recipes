@@ -19,7 +19,9 @@ export default function Title({ type, text }: Title) {
 
     return (
         <div className="w-full pt-4 px-4 text-center">
-            {getTitleType(type, text)}
+            <div className="pb-2">
+                {getTitleType(type, text)}
+            </div>
             <Line />
         </div>
     )

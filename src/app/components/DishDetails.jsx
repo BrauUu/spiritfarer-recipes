@@ -33,7 +33,7 @@ export default function DishDetails({ selectedDish }) {
             Tipo: <strong className="text-highlight">{selectedDish.type.toUpperCase()}</strong>
           </span>
         </div>
-        <div className="gap-x-2 flex justify-center">
+        <div className="gap-x-5 flex justify-center">
           {
             selectedDish.ingredients.map((ingredient, i) => {
               return <Ingredient ingredient={ingredient} key={i} />

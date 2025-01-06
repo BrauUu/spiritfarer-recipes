@@ -6,6 +6,7 @@ export default function Dish({dish, setSelectedDish}) {
     <div className={`
       flex
       items-center
+      justify-center
       cursor-pointer
       hover:bg-neon 
       hover:rounded-full 
@@ -13,7 +14,7 @@ export default function Dish({dish, setSelectedDish}) {
     `}
       onClick={() => setSelectedDish(dish)}>
       <Image
-        className={`w-full p-2`}
+        className={`h-max-full w-auto p-2`}
         width={100}
         height={100}
         src={dish.src}
