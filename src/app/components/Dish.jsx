@@ -11,10 +11,11 @@ export default function Dish({dish, setSelectedDish}) {
       hover:bg-neon 
       hover:rounded-full 
       hover:shadow-neon-sm
+      p-3
     `}
       onClick={() => setSelectedDish(dish)}>
       <Image
-        className={`h-max-full w-auto p-2`}
+        className={`max-h-full w-auto`}
         width={100}
         height={100}
         src={dish.src}

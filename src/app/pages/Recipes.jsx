@@ -38,7 +38,7 @@ export default function Recipes({ changeActualScreen }) {
                             <div className="w-1/2 overflow-hidden flex flex-col">
                                 <Title type='primary' text='Receitas'/>
                                 <div className="py-2 w-full overflow-y-scroll flex justify-center">
-                                    <div className="grid grid-cols-4-100 auto-rows-[100px] gap-2 p-4 pt-4 overflow-y-scroll">
+                                    <div className="grid grid-cols-4-100 auto-rows-[100px] p-4 pt-4 overflow-y-scroll">
                                         {
                                             dishesList.map((dish, i) => {
                                                 return <Dish dish={dish} key={i} setSelectedDish={setSelectedDish} />
