@@ -35,10 +35,10 @@ export default function Recipes({ changeActualScreen }) {
                     :
                     <div>
                         <Box>
-                            <div className="w-1/2 overflow-hidden flex flex-col">
-                                <Title type='primary' text='Receitas'/>
-                                <div className="py-2 w-full overflow-y-scroll flex justify-center">
-                                    <div className="grid grid-cols-4-100 auto-rows-[100px] p-4 pt-4 overflow-y-scroll">
+                            <div className="w-[55%] overflow-hidden flex flex-col">
+                                <Title type='primary' text='Receitas' classes='text-left pl-6'/>
+                                <div className="pb-5 w-full overflow-y-scroll flex justify-center">
+                                    <div className="grid grid-cols-4-70 auto-rows-[70px] p-4 pt-4 overflow-y-scroll gap-x-5 gap-y-2">
                                         {
                                             dishesList.map((dish, i) => {
                                                 return <Dish dish={dish} key={i} setSelectedDish={setSelectedDish} />
@@ -47,7 +47,7 @@ export default function Recipes({ changeActualScreen }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-1/2 mr-4 my-4 flex justify-center h-[calc(100% - 32px)] bg-primary border-neon border-2 border-solid shadow-neon-xsm rounded-lg">
+                            <div className="w-[45%] mr-4 my-4 flex justify-center h-[calc(100% - 32px)] bg-primary border-neon border-2 border-solid shadow-neon rounded-lg">
                                 {
                                     selectedDish ?
                                         <DishDetails selectedDish={selectedDish} />

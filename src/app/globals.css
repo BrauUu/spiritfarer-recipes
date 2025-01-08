@@ -10,17 +10,24 @@
 :root {
   --primary-bg: #063141;
   --secondary-bg: #1f7572;
+  --secondary-bg-glass: rgba(31, 117, 114, 0.30);
 
-  --primary-neon: #faf86c;
+  --primary-neon: #fef8a7;
+  --primary-neon-glass: rgba(250, 248, 108, 0.30);
+  --primary-neon-shadow: #e19e48;
   --secondary-neon: #DADADA;
 
-  --primary-text: #fdfb8f;
+
+  --primary-text: #fef8a7;
   --secondary-text: #ddd7b5;
   --highlight-text: #e2a430;
+
+  --font-title: 'Nunito';
+  --font-default: 'Lora';
 }
 
 body {
-  background: linear-gradient(var(--primary-bg), var(--secondary-bg));
+  background: #333;
   background-attachment: fixed;
 
   height: 100vh;
@@ -36,13 +43,14 @@ body {
 }
 
 h1 {
-  font-size: 40px;
-}
-
-h2 {
   font-size: 36px;
 }
 
+h2 {
+  font-size: 28px;
+}
+
 h1, h2, h3 {
-  font-weight: 600;
+  font-family: var(--font-title);
+  font-weight: 500;
 }

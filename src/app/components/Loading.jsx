@@ -5,7 +5,7 @@ import { motion } from "motion/react"
 export default function InitialLoading() {
   return (
     <div
-      className='w-full h-full flex items-center justify-center bg-[#00000055]'
+      className='w-full h-full flex items-center justify-center bg-primary'
     >
       <motion.div
         animate={{ opacity: [1, 0.25, 1] }}

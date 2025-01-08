@@ -2,19 +2,36 @@ export default function Box({ children }) {
     return (
         <div
             className={`
-            flex
-            flex-row
             max-w-full
-            w-[1024px]
-            h-[600px]
-            shadow-neon
-            rounded-3xl
-            border-2
+            rounded-[32px]
+            w-[820px]
+            h-[580px]
+            p-4
+            bg-secondary-glass
+            flex
+            items-center
+            border-1
             border-solid
-            border-neon
+            border-neon-glass
+            shadow-neon-glass
         `}
         >
-            {children}
+            <div
+                className={`
+                flex
+                flex-row
+                w-full
+                h-full
+                shadow-neon
+                rounded-[50px]
+                border-[1px]
+                border-solid
+                border-neon
+                bg-primary
+                `}
+            >
+                {children}
+            </div>
         </div>
     )
 }

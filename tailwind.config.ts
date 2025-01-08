@@ -12,20 +12,23 @@ export default {
         'highlight' : 'var(--highlight-text)'
       },
       boxShadow: {
-        'neon': '0 8px 32px 0 var(--primary-neon);',
-        'neon-sm': '0 0 16px 2px var(--primary-neon);',
-        'neon-xsm"': '0 0 4px 1px var(--primary-neon);'
+        'neon': '0 0 4px 1px var(--primary-neon-shadow), inset 0 0 4px 1px var(--primary-neon-shadow)',
+        'neon-lg': '0 0 15px 5px var(--primary-neon-shadow), inset 0 0 4px 1px var(--primary-neon-shadow)',
+        'neon-alter': '0 0 40px 5px var(--primary-neon-shadow)',
+        'neon-glass': '0 0 2px 1px var(--primary-neon-glass), inset 0 0 2px 1px var(--primary-neon-glass)'
       },
       borderColor: {
         'neon': 'var(--primary-neon)',
+        'neon-glass': 'var(--primary-neon-glass)',
         'secondary-neon': 'var(--secondary-neon)'
       },
       backgroundColor: {
         'neon': 'var(--primary-neon);',
-        'primary': 'var(--primary-bg)'
+        'primary': 'var(--primary-bg);',
+        'secondary-glass': 'var(--secondary-bg-glass)'
       },
       gridTemplateColumns : {
-        '4-100' : 'repeat(4, 100px);'
+        '4-70' : 'repeat(4, 70px);'
       },
       fill : {
         'neon': 'var(--primary-neon);',
