@@ -15,7 +15,7 @@ export default function Dish({dish, setSelectedDish}) {
     `}
       onClick={() => setSelectedDish(dish)}>
       <Image
-        className={`max-h-[85%] w-auto`}
+        className={`max-h-[85%] w-auto z-0`}
         width={100}
         height={100}
         src={dish.src}

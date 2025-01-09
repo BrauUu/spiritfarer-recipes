@@ -4,19 +4,22 @@ import { useEffect, useState } from 'react'
 export default function Ingredient({ ingredient }) {
 
   const [ingredientName, setIngredientName] = useState()
+  const [ingredientImage, setIngredientImage] = useState()
+
   const ingredientsNames = ingredient.name.split('/')
+  const ingredientsImages = ingredient.src.split('|')
 
   useEffect(() => {
     setIngredientName(ingredientsNames[0])
-    if (ingredientsNames.length > 1) {
+    setIngredientImage(ingredientsImages[0])
+    const ingredientsImagesLength = ingredientsImages.length
+    const ingredientsNamesLength = ingredientsNames.length
+    if (ingredientsNamesLength > 1) {
       let i = 1
       const intervalId = setInterval(() => {
-        console.log(i)
-        setIngredientName(ingredientsNames[i])
+        setIngredientName(ingredientsNames[i % ingredientsNamesLength])
+        setIngredientImage(ingredientsImages[i % ingredientsImagesLength])
         i += 1
-        if(i >= ingredientsNames.length) {
-          i = 0
-        }
       }, 1000)
       return () => {
         clearInterval(intervalId)
@@ -31,16 +34,21 @@ export default function Ingredient({ ingredient }) {
           className="flex justify-center items-center rounded-full w-full h-full"
           style={{ "background": "radial-gradient(circle, var(--secondary-bg) 10%, transparent 70%)" }}
         >
-          <Image
-            className='max-h-[70%] w-auto h-auto max-w-[70%]'
-            width={100}
-            height={100}
-            alt={`Uma imagem de um(a) ${ingredient.name}`}
-            src={ingredient.src}
-          ></Image>
+          {
+            ingredientImage ?
+            <Image
+              className='max-h-[70%] w-auto h-auto max-w-[70%]'
+              width={100}
+              height={100}
+              alt={`Uma imagem de um(a) ${ingredient.name}`}
+              src={ingredientImage}
+            ></Image>
+            :
+            undefined
+          }
         </div>
       </div>
-      <span className='h-[20px] w-[100px]'>{ingredientName}</span>
+      <span className='h-[45px] w-[100px] flex items-center justify-center'>{ingredientName}</span>
     </div>
   )
 }

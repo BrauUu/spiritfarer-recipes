@@ -7,9 +7,9 @@ import Title from "./Title";
 
 export default function DishDetails({ selectedDish }) {
   return (
-    <div className="w-full px-2 flex flex-col justify-center items-center text-center">
-      <div className="flex flex-col items-center">
-        <div className="dish-image-div">
+    <div className="w-full gap-2 px-2 py-8 flex flex-col justify-between items-center text-center">
+      <div className="w-full flex flex-col items-center">
+        <div className="w-full flex flex-col items-center py-4">
           <Image
             alt={'Uma imagem de um delicioso prato de ' + selectedDish.name}
             className="h-[80px] w-auto"
@@ -18,28 +18,26 @@ export default function DishDetails({ selectedDish }) {
             width={100}
           >
           </Image>
+          <Title type='secondary' text={selectedDish.name} />
+        </div>
+        <div className="text-secondary font-light flex flex-col gap-y-2 pt-2 ">
+          <span>{selectedDish.description}</span>
+          <div className="flex flex-col">
+            <span>
+              Tamanho: <strong className="text-highlight font-semibold">{selectedDish.size.toUpperCase()}</strong>
+            </span>
+            <span>
+              Tipo: <strong className="text-highlight font-semibold">{selectedDish.type.toUpperCase()}</strong>
+            </span>
+          </div>
         </div>
       </div>
-      <Title type='secondary' text={selectedDish.name}/>
-      <div className="flex flex-col gap-y-2 pt-2 text-secondary font-light">
-        <div className="">
-          <span>{selectedDish.description}</span>
-        </div>
-        <div className="flex flex-col">
-          <span>
-            Tamanho: <strong className="text-highlight font-semibold">{selectedDish.size.toUpperCase()}</strong>
-          </span>
-          <span>
-            Tipo: <strong className="text-highlight font-semibold">{selectedDish.type.toUpperCase()}</strong>
-          </span>
-        </div>
-        <div className=" flex justify-center">
-          {
-            selectedDish.ingredients.map((ingredient, i) => {
-              return <Ingredient ingredient={ingredient} key={i} />
-            })
-          }
-        </div>
+      <div className="flex justify-center text-secondary gap-x-2">
+        {
+          selectedDish.ingredients.map((ingredient, i) => {
+            return <Ingredient ingredient={ingredient} key={i} />
+          })
+        }
       </div>
     </div>
   )
