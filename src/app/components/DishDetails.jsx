@@ -12,7 +12,7 @@ export default function DishDetails({ selectedDish }) {
         <div className="dish-image-div">
           <Image
             alt={'Uma imagem de um delicioso prato de ' + selectedDish.name}
-            className="h-[100px] w-auto"
+            className="h-[80px] w-auto"
             src={selectedDish.src}
             height={100}
             width={100}
@@ -21,7 +21,7 @@ export default function DishDetails({ selectedDish }) {
         </div>
       </div>
       <Title type='secondary' text={selectedDish.name}/>
-      <div className="flex flex-col gap-y-3 pt-2 text-secondary font-light">
+      <div className="flex flex-col gap-y-2 pt-2 text-secondary font-light">
         <div className="">
           <span>{selectedDish.description}</span>
         </div>
@@ -33,7 +33,7 @@ export default function DishDetails({ selectedDish }) {
             Tipo: <strong className="text-highlight font-semibold">{selectedDish.type.toUpperCase()}</strong>
           </span>
         </div>
-        <div className="gap-x-5 flex justify-center">
+        <div className=" flex justify-center">
           {
             selectedDish.ingredients.map((ingredient, i) => {
               return <Ingredient ingredient={ingredient} key={i} />
