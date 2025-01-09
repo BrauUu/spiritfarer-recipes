@@ -7,7 +7,7 @@ import Title from "./Title";
 
 export default function DishDetails({ selectedDish }) {
   return (
-    <div className="w-full px-10 flex flex-col justify-center items-center text-center">
+    <div className="w-full px-2 flex flex-col justify-center items-center text-center">
       <div className="flex flex-col items-center">
         <div className="dish-image-div">
           <Image
@@ -21,16 +21,16 @@ export default function DishDetails({ selectedDish }) {
         </div>
       </div>
       <Title type='secondary' text={selectedDish.name}/>
-      <div className="flex flex-col gap-y-3 pt-2">
+      <div className="flex flex-col gap-y-3 pt-2 text-secondary font-light">
         <div className="">
           <span>{selectedDish.description}</span>
         </div>
         <div className="flex flex-col">
           <span>
-            Tamanho: <strong className="text-highlight">{selectedDish.size.toUpperCase()}</strong>
+            Tamanho: <strong className="text-highlight font-semibold">{selectedDish.size.toUpperCase()}</strong>
           </span>
           <span>
-            Tipo: <strong className="text-highlight">{selectedDish.type.toUpperCase()}</strong>
+            Tipo: <strong className="text-highlight font-semibold">{selectedDish.type.toUpperCase()}</strong>
           </span>
         </div>
         <div className="gap-x-5 flex justify-center">

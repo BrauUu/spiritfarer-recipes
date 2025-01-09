@@ -8,8 +8,9 @@
 }
 
 :root {
-  --primary-bg: #063141;
-  --secondary-bg: #1f7572;
+  --primary-bg: #05334b;
+  --primary-bg-glass: rgba( 255, 255, 255, 0.05);
+  --secondary-bg: #3885a0;
   --secondary-bg-glass: rgba(31, 117, 114, 0.30);
 
   --primary-neon: #fef8a7;

@@ -47,7 +47,7 @@ export default function Recipes({ changeActualScreen }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-[45%] mr-4 my-4 flex justify-center h-[calc(100% - 32px)] bg-primary border-neon border-2 border-solid shadow-neon rounded-lg">
+                            <div className="w-[45%] bg-primary-glass mr-5 my-5 flex justify-center h-[calc(100% - 40px)] rounded-2xl border-t border-l border-solid border-secondary">
                                 {
                                     selectedDish ?
                                         <DishDetails selectedDish={selectedDish} />
