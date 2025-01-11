@@ -13,8 +13,47 @@ import api from '../api'
 export default function Recipes({ changeActualScreen }) {
 
     const [selectedDish, setSelectedDish] = useState(false)
+    const [selectedDishIndex, setSelectedDishIndex] = useState()
     const [dishesList, setDishesList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+
+        function changeSelectedDish(index) {
+            setSelectedDishIndex((prevIndex) => {
+                const newIndex = prevIndex + index;
+                if (newIndex < 0 || newIndex >= dishesList.length) {
+                    return prevIndex;
+                }
+                setSelectedDish(dishesList[newIndex]);
+                return newIndex;
+            });
+        }
+
+        const KEY_ACTIONS = {
+            'ArrowLeft': () => changeSelectedDish(-1),
+            'ArrowRight': () => changeSelectedDish(1),
+            'ArrowUp': () => changeSelectedDish(-4),
+            'ArrowDown': () => changeSelectedDish(4),
+        }
+
+        document.addEventListener('keydown', handleKeydown)
+
+        function handleKeydown(event) {
+            if (KEY_ACTIONS[event.key]) {
+                KEY_ACTIONS[event.key]();
+            }
+        }
+
+        return () => {
+            document.removeEventListener('keydown', handleKeydown);
+        };
+    }, [dishesList]);
+
+    function setSelectedDishData(index, dish) {
+        setSelectedDishIndex(index)
+        setSelectedDish(dish)
+    }
 
     useEffect(() => {
         async function fetchData() {
@@ -36,12 +75,12 @@ export default function Recipes({ changeActualScreen }) {
                     <div>
                         <Box>
                             <div className="w-[55%] overflow-hidden flex flex-col">
-                                <Title type='primary' text='Receitas' classes='text-left pl-10'/>
+                                <Title type='primary' text='Receitas' classes='text-left pl-10' />
                                 <div className="pb-5 w-full overflow-y-scroll flex justify-center">
                                     <div className="grid grid-cols-4-70 auto-rows-[70px] p-4 overflow-y-scroll gap-x-5 gap-y-2">
                                         {
                                             dishesList.map((dish, i) => {
-                                                return <Dish dish={dish} key={i} setSelectedDish={setSelectedDish} />
+                                                return <Dish dish={dish} key={i} index={i} selectedDishIndex={selectedDishIndex} setSelectedDishData={setSelectedDishData} />
                                             })
                                         }
                                     </div>
