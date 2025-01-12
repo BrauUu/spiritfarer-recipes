@@ -18,7 +18,13 @@ export default function Recipes({ changeActualScreen }) {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
+        const activeDishElement = document.querySelector('.active')
+        if(activeDishElement){
+            activeDishElement.scrollIntoView({behavior: 'smooth', block: 'center'})
+        }
+    }, [selectedDish]);
 
+    useEffect(() => {
         function changeSelectedDish(index) {
             setSelectedDishIndex((prevIndex) => {
                 const newIndex = prevIndex + index;
@@ -76,7 +82,7 @@ export default function Recipes({ changeActualScreen }) {
                         <Box>
                             <div className="w-[55%] overflow-hidden flex flex-col">
                                 <Title type='primary' text='Receitas' classes='text-left pl-10' />
-                                <div className="pb-5 w-full overflow-y-scroll flex justify-center">
+                                <div className="pb-5 w-full flex flex-1 overflow-hidden justify-center">
                                     <div className="grid grid-cols-4-70 auto-rows-[70px] p-4 overflow-y-scroll gap-x-5 gap-y-2">
                                         {
                                             dishesList.map((dish, i) => {

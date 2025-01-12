@@ -3,7 +3,9 @@ import Image from 'next/image'
 export default function Dish({index, dish, setSelectedDishData, selectedDishIndex}) {
 
   return (
-    <div className={`
+    <div 
+      id={`bookId-${dish.bookId}`}
+      className={`
       flex
       items-center
       justify-center
@@ -12,7 +14,7 @@ export default function Dish({index, dish, setSelectedDishData, selectedDishInde
       hover:rounded-full 
       hover:shadow-neon-lg
       p-1
-      ${index == selectedDishIndex ? 'bg-neon rounded-full shadow-neon-lg' : ''}
+      ${index == selectedDishIndex ? 'active bg-neon rounded-full shadow-neon-lg' : ''}
     `}
       onClick={() => setSelectedDishData(index, dish)}>
       <Image
