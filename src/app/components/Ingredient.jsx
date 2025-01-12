@@ -42,7 +42,7 @@ export default function Ingredient({ ingredient }) {
               height={100}
               alt={`Uma imagem de um(a) ${ingredient.name}`}
               src={ingredientImage}
-              loader={'eager'}
+              loading='eager'
               decoding={'sync'}
             ></Image>
             :
