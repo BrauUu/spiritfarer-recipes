@@ -32,7 +32,7 @@ export default function DishDetails({ selectedDish }) {
           </div>
         </div>
       </div>
-      <div className="flex justify-center text-secondary gap-x-2">
+      <div className="flex justify-center text-secondary gap-2 max-md:flex-wrap">
         {
           selectedDish.ingredients.map((ingredient, i) => {
             return <Ingredient ingredient={ingredient} key={i} />
