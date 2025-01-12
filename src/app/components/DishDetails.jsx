@@ -7,7 +7,7 @@ import Title from "./Title";
 
 export default function DishDetails({ selectedDish }) {
   return (
-    <div className="w-full gap-2 px-2 py-8 flex flex-col justify-between items-center text-center">
+    <div className="w-full gap-2 px-2 py-8 flex flex-col justify-between items-center text-center max-md:py-0 max-md:flex-row">
       <div className="w-full flex flex-col items-center">
         <div className="w-full flex flex-col items-center py-4">
           <Image

@@ -14,6 +14,9 @@ export default function Box({ children }) {
             border-solid
             border-neon-glass
             shadow-neon-glass
+            max-md:w-screen
+            max-md:h-screen
+            max-md:min-h-[768px]
         `}
         >
             <div
@@ -28,6 +31,7 @@ export default function Box({ children }) {
                 border-solid
                 border-neon
                 bg-primary
+                max-md:flex-col
                 `}
             >
                 {children}

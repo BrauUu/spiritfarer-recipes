@@ -78,11 +78,11 @@ export default function Recipes({ changeActualScreen }) {
                 isLoading ?
                     <Loading />
                     :
-                    <div>
+                    <div className="">
                         <Box>
-                            <div className="w-[55%] overflow-hidden flex flex-col">
+                            <div className="w-[55%] overflow-hidden flex flex-col max-md:w-full max-md:h-1/2">
                                 <Title type='primary' text='Receitas' classes='text-left pl-10' />
-                                <div className="pb-5 w-full flex flex-1 overflow-hidden justify-center">
+                                <div className="pb-5 w-full flex overflow-hidden justify-center">
                                     <div className="grid grid-cols-4-70 auto-rows-[70px] p-4 overflow-y-scroll gap-x-5 gap-y-2">
                                         {
                                             dishesList.map((dish, i) => {
@@ -92,7 +92,7 @@ export default function Recipes({ changeActualScreen }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-[45%] bg-primary-glass mr-5 my-5 flex justify-center h-[calc(100% - 40px)] rounded-2xl border-t border-l border-solid border-secondary">
+                            <div className="w-[45%] bg-primary-glass mr-5 my-5 flex justify-center h-[calc(100%-40px)] rounded-2xl border-t border-l border-solid border-secondary max-md:h-1/2 max-md:w-[calc(100%-40px)] max-md:mx-5 max-md:mt-0">
                                 {
                                     selectedDish ?
                                         <DishDetails selectedDish={selectedDish} />
