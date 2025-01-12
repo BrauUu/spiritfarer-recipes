@@ -23,6 +23,7 @@ export default function Dish({index, dish, setSelectedDishData, selectedDishInde
         height={100}
         src={dish.src}
         alt={'Uma imagem de um delicioso prato de ' + dish.name}
+        loader={'eager'}
       ></Image>
     </div>
   )
