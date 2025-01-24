@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import localFont from 'next/font/local'
 
-import backgroundImage from '../../public/images/background.webp'
-
 import "./globals.css";
 
 const defaultFont = localFont({
@@ -37,8 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${defaultFont.className} bg-no-repeat bg-center`}
-        style={{backgroundImage: `url(${backgroundImage.src})`, backgroundSize: 'cover'}}
+        className={`${defaultFont.className}`}
       >
         {children}
       </body>

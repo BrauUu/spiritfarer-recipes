@@ -10,7 +10,8 @@ export default {
     extend: {
       colors: {
         'highlight' : 'var(--highlight-text)',
-        'secondary' : 'var(--secondary-text)'
+        'secondary' : 'var(--secondary-text)',
+        'neon' : 'var(--primary-neon)'
       },
       boxShadow: {
         'neon': '0 0 8px 1px var(--primary-neon-shadow), inset 0 0 8px 1px var(--primary-neon-shadow)',
@@ -36,8 +37,9 @@ export default {
       },
       fill : {
         'neon': 'var(--primary-neon);',
-        'secondary': 'var(--secondary-text);'
-      }
+        'secondary': 'var(--secondary-text);',
+        'primary': 'var(--primary-text);'
+      },
     },
   },
   plugins: [],

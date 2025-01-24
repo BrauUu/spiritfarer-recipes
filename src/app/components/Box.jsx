@@ -16,7 +16,6 @@ export default function Box({ children }) {
             shadow-neon-glass
             max-md:w-screen
             max-md:h-screen
-            max-md:min-h-[768px]
         `}
         >
             <div
