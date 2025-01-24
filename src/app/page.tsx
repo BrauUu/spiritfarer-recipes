@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { Provider } from './Context'
 
 import backgroundDay from '../../public/images/background-day.png'
-import backgroundNight from '../../public/images/background-day.png' //TODO: Edit image for 'backgroundNight'
+import backgroundNight from '../../public/images/background-night.png'
 import backgroundDawn from '../../public/images/background-dawn.png'
 import backgroundDusk from '../../public/images/background-dusk.png'
 
@@ -22,7 +22,7 @@ export default function App() {
     if(hour >= 5 && hour <= 7) return backgroundDawn.src
     if(hour > 7 && hour <= 17) return backgroundDay.src
     if(hour > 17 && hour <= 19) return backgroundDusk.src
-    return backgroundDusk.src
+    return backgroundNight.src
   }
 
   function changeActualScreen() {
