@@ -5,7 +5,7 @@ export const Context = createContext()
 export function Provider({ children }) {
 
     const [dishesList, setDishesList] = useState([])
-    const [ingredientList, setIngredientList] = useState([])
+    const [ingredientsList, setIngredientsList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
     return (
@@ -13,10 +13,10 @@ export function Provider({ children }) {
             {
                 dishesList,
                 setDishesList,
-                ingredientList,
-                setIngredientList,
+                ingredientsList,
+                setIngredientsList,
                 isLoading,
-                setIsLoading
+                setIsLoading,
             }
         }>
             {children}

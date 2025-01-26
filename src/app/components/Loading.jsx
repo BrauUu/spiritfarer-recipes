@@ -1,10 +1,11 @@
 "use client"
 
-import React from 'react';
+import React from 'react';;
 import Image from "next/image";
 import { motion } from "motion/react"
 
 export default function InitialLoading() {
+
   return (
     <div
       className='w-full h-full flex items-center justify-center'
@@ -23,7 +24,8 @@ export default function InitialLoading() {
           width={512}
           height={279}
           alt="Logo do jogo Spiritfarer"
-          src="/images/loading.png">
+          src={"/images/loading.png"}
+        >
         </Image>
       </motion.div>
     </div>

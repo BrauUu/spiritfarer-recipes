@@ -6,20 +6,36 @@ import Loading from "../components/Loading";
 
 export default function Cooking({ changeActualScreen }) {
 
-    const [isLoading, setIsLoading] = useState(false)
-    const [ingredientsList, setIngredientsList] = useState([])
+    const {
+        ingredientsList,
+        setIngredientsList,
+        isLoading,
+        setIsLoading
+    } = useContext(Context)
 
     useEffect(() => {
         async function fetchData() {
             const response = await api.getAllIngredients()
             const data = await response.json()
             setIngredientsList(data)
-            localStorage.setItem('ingredientList', data)
-            setTimeout(() => {
-                setIsLoading(false)
-            }, 2500)
+            localStorage.setItem('ingredientsList', JSON.stringify(data))
         }
-        fetchData()
+        
+        if (!localStorage.getItem('dishesList')) {
+            setIsLoading(true)
+            fetchData()
+            setIsLoading(false)
+            return
+        }
+
+        setIngredientsList(() => {
+            try {
+                return JSON.parse(localStorage.getItem('ingredientsList')) || [];
+            } catch {
+                return [];
+            }
+        })
+
     }, [])
 
     return (

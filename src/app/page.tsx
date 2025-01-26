@@ -19,9 +19,16 @@ export default function App() {
   function getBackgroundByTime() {
     const date = new Date()
     const hour = date.getHours()
-    if(hour >= 5 && hour <= 7) return backgroundDawn.src
-    if(hour > 7 && hour <= 17) return backgroundDay.src
-    if(hour > 17 && hour <= 19) return backgroundDusk.src
+    if (hour >= 5 && hour <= 7) {
+      return backgroundDawn.src
+    }
+    if (hour > 7 && hour <= 17) {
+
+      return backgroundDay.src
+    }
+    if (hour > 17 && hour <= 19) {
+      return backgroundDusk.src
+    }
     return backgroundNight.src
   }
 
@@ -34,8 +41,8 @@ export default function App() {
 
   return (
     <div
-      className="bg-no-repeat bg-center bg-cover bg-primary h-screen flex justify-center items-center"
-      style={{backgroundImage: `url(${getBackgroundByTime()})`}}
+      className="bg-no-repeat bg-center bg-cover h-screen flex justify-center items-center"
+      style={{ backgroundImage: `url(${getBackgroundByTime()})` }}
     >
       <Provider>
         {

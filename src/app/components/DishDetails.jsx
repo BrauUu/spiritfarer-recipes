@@ -24,10 +24,10 @@ export default function DishDetails({ selectedDish }) {
           <span>{selectedDish.description}</span>
           <div className="flex flex-col">
             <span>
-              Tamanho: <strong className="text-highlight font-semibold">{selectedDish.size.toUpperCase()}</strong>
+              Tamanho: <span className="text-highlight font-semibold uppercase">{selectedDish.size}</span>
             </span>
             <span>
-              Tipo: <strong className="text-highlight font-semibold">{selectedDish.type.toUpperCase()}</strong>
+              Tipo: <span className="text-highlight font-semibold uppercase">{selectedDish.type}</span>
             </span>
           </div>
         </div>
