@@ -1,8 +1,11 @@
 "use client"
 
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+
+import { Context } from "../Context";
 import Loading from "../components/Loading";
 
+import api from '../api'
 
 export default function Cooking({ changeActualScreen }) {
 
@@ -21,7 +24,7 @@ export default function Cooking({ changeActualScreen }) {
             localStorage.setItem('ingredientsList', JSON.stringify(data))
         }
         
-        if (!localStorage.getItem('dishesList')) {
+        if (!localStorage.getItem('ingredientsList')) {
             setIsLoading(true)
             fetchData()
             setIsLoading(false)
