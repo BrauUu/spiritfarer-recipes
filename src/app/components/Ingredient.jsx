@@ -1,7 +1,33 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
-export default function Ingredient({ ingredient }) {
+export const IngredientPrimary = ({ ingredient }) => {
+  return (
+    <div className="border-secondary-neon border-[1px] border-solid mb-2 rounded-xl h-[70px] w-[70px]">
+      <div
+        className="flex justify-center items-center rounded-full w-full h-full"
+        style={{ "background": "radial-gradient(circle, var(--secondary-bg) 10%, transparent 70%)" }}
+      >
+        {
+          ingredient.src ?
+            <Image
+              className='max-h-[70%] w-auto h-auto max-w-[70%]'
+              width={100}
+              height={100}
+              alt={`Uma imagem de um(a) ${ingredient.name}`}
+              src={ingredient.src}
+              loading='eager'
+              decoding={'sync'}
+            ></Image>
+            :
+            undefined
+        }
+      </div>
+    </div>
+  )
+}
+
+export const IngredientSecondary = ({ ingredient }) => {
 
   const [ingredientName, setIngredientName] = useState()
   const [ingredientImage, setIngredientImage] = useState()
@@ -36,17 +62,17 @@ export default function Ingredient({ ingredient }) {
         >
           {
             ingredientImage ?
-            <Image
-              className='max-h-[70%] w-auto h-auto max-w-[70%]'
-              width={100}
-              height={100}
-              alt={`Uma imagem de um(a) ${ingredient.name}`}
-              src={ingredientImage}
-              loading='eager'
-              decoding={'sync'}
-            ></Image>
-            :
-            undefined
+              <Image
+                className='max-h-[70%] w-auto h-auto max-w-[70%]'
+                width={100}
+                height={100}
+                alt={`Uma imagem de um(a) ${ingredient.name}`}
+                src={ingredientImage}
+                loading='eager'
+                decoding={'sync'}
+              ></Image>
+              :
+              undefined
           }
         </div>
       </div>

@@ -22,11 +22,6 @@ const titleFont = localFont({
   variable: "--font-title",
 })
 
-export const metadata: Metadata = {
-  title: "📝 Spiritfarer: Recipes Book",
-  description: "Here you can cook your favorite Spiritfarer dishes.",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{

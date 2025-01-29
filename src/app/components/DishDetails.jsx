@@ -1,8 +1,7 @@
 import React from "react";
 import Image from 'next/image'
 
-import Line from "./Line";
-import Ingredient from "./Ingredient";
+import { IngredientSecondary } from "./Ingredient";
 import Title from "./Title";
 
 export default function DishDetails({ selectedDish }) {
@@ -35,7 +34,7 @@ export default function DishDetails({ selectedDish }) {
       <div className="flex justify-center text-secondary gap-2 max-md:flex-wrap">
         {
           selectedDish.ingredients.map((ingredient, i) => {
-            return <Ingredient ingredient={ingredient} key={i} />
+            return <IngredientSecondary ingredient={ingredient} key={i} />
           })
         }
       </div>

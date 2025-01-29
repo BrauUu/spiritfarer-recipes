@@ -1,4 +1,4 @@
-export default function Box({ children }) {
+const Box = ({ children }) => {
     return (
         <div
             className={`
@@ -37,4 +37,84 @@ export default function Box({ children }) {
             </div>
         </div>
     )
+}
+
+const LongBoxWithSideBox = ({ children, title }) => {
+    return (
+        <div className="flex items-center justify-center flex-col">
+            <div
+                className={`
+                pt-2
+                px-2
+                bg-secondary-glass
+                z-10 
+                rounded-t-[16px]
+                border-1
+                border-solid
+                border-neon-glass
+                shadow-neon-glass
+                `}>
+                <div
+                    className={`
+                    px-10 
+                    py-2 
+                    bg-primary 
+                    mb-[-16px] 
+                    z-10 
+                    rounded-t-[16px]
+                    border-[1px]
+                    border-solid
+                    border-neon
+                    shadow-neon
+                `}>
+
+                    <h1 className="text-3xl">
+                        {title}
+                    </h1>
+                </div>
+            </div>
+            <div
+                className={`
+            z-0
+            max-w-full
+            rounded-[32px]
+            w-[480px]
+            h-[640px]
+            p-4
+            bg-secondary-glass
+            flex
+            items-center
+            border-1
+            border-solid
+            border-neon-glass
+            shadow-neon-glass
+            max-md:w-screen
+            max-md:h-screen
+        `}
+            >
+                <div
+                    className={`
+                flex
+                flex-col
+                w-full
+                h-full
+                shadow-neon
+                rounded-[50px]
+                border-[1px]
+                border-solid
+                border-neon
+                bg-primary
+                max-md:flex-col
+                `}
+                >
+                    {children}
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export {
+    Box,
+    LongBoxWithSideBox
 }

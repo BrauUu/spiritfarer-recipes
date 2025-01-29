@@ -3,8 +3,9 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import { Context } from "../Context";
+import useMetadata from "../hooks/useMetadata";
 
-import Box from '../components/Box'
+import { Box } from '../components/Box'
 import Loading from "../components/Loading";
 import Dish from "../components/Dish";
 import DishDetails from "../components/DishDetails";
@@ -24,6 +25,12 @@ export default function Recipes({ changeActualScreen }) {
     const [selectedDish, setSelectedDish] = useState(false)
     const [selectedDishIndex, setSelectedDishIndex] = useState()
 
+    const metadata = {
+        title: "📝 Spiritfarer: Recipes Book",
+        description: "Your favorite dishes are here",
+    };
+
+    useMetadata(metadata)
     useEffect(() => {
         const activeDishElement = document.querySelector('.active')
         if (activeDishElement) {
@@ -75,6 +82,7 @@ export default function Recipes({ changeActualScreen }) {
             setDishesList(data)
             localStorage.setItem('dishesList', JSON.stringify(data))
         }
+
         if (isLoading) {
             setTimeout(() => {
                 setIsLoading(false)
@@ -84,7 +92,7 @@ export default function Recipes({ changeActualScreen }) {
             fetchData()
             return
         }
-        
+
         setDishesList(() => {
             try {
                 return JSON.parse(localStorage.getItem('dishesList')) || [];
@@ -99,9 +107,9 @@ export default function Recipes({ changeActualScreen }) {
         <>
             {
                 isLoading ?
-                    <Loading/>
+                    <Loading />
                     :
-                    <div className="">
+                    <div className="w-full h-full flex justify-center items-center bg-fade">
                         <Box>
                             <div className="w-[55%] overflow-hidden flex flex-col max-md:w-full max-md:h-1/2">
                                 <Title type='primary' text='Receitas' classes='text-left pl-10' />

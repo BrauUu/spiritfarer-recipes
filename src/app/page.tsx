@@ -1,13 +1,13 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Provider } from './Context'
 
-import backgroundDay from '../../public/images/background-day.png'
-import backgroundNight from '../../public/images/background-night.png'
-import backgroundDawn from '../../public/images/background-dawn.png'
-import backgroundDusk from '../../public/images/background-dusk.png'
+import backgroundDay from '../../public/images/backgrounds/background-day.png'
+import backgroundNight from '../../public/images/backgrounds/background-night.png'
+import backgroundDawn from '../../public/images/backgrounds/background-dawn.png'
+import backgroundDusk from '../../public/images/backgrounds/background-dusk.png'
 
 import Recipes from "./pages/Recipes";
 import Cooking from "./pages/Cooking";
@@ -15,22 +15,26 @@ import Cooking from "./pages/Cooking";
 export default function App() {
 
   const [actualScreen, setActualScreen] = useState("recipes")
+  const [backgroundImage, setBackgroundImage] = useState('')
 
-  function getBackgroundByTime() {
+
+  useEffect(() => {
     const date = new Date()
     const hour = date.getHours()
     if (hour >= 5 && hour <= 7) {
-      return backgroundDawn.src
+      setBackgroundImage(backgroundDawn.src)
+      return
     }
     if (hour > 7 && hour <= 17) {
-
-      return backgroundDay.src
+      setBackgroundImage(backgroundDay.src)
+      return
     }
     if (hour > 17 && hour <= 19) {
-      return backgroundDusk.src
+      setBackgroundImage(backgroundDusk.src)
+      return
     }
-    return backgroundNight.src
-  }
+    setBackgroundImage(backgroundNight.src)
+  }, [])
 
   function changeActualScreen() {
     if (actualScreen === 'recipes')
@@ -42,7 +46,7 @@ export default function App() {
   return (
     <div
       className="bg-no-repeat bg-center bg-cover h-screen flex justify-center items-center"
-      style={{ backgroundImage: `url(${getBackgroundByTime()})` }}
+      style={backgroundImage ? { backgroundImage: `url(${backgroundImage})`} : {}}
     >
       <Provider>
         {

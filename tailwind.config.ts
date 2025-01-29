@@ -30,7 +30,8 @@ export default {
         'primary': 'var(--primary-bg);',
         'primary-glass': 'var(--primary-bg-glass)',
         'secondary': 'var(--secondary-bg);',
-        'secondary-glass': 'var(--secondary-bg-glass)'
+        'secondary-glass': 'var(--secondary-bg-glass)',
+        'fade': 'var(--fade)'
       },
       gridTemplateColumns : {
         '4-70' : 'repeat(4, 70px);'
