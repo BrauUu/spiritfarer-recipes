@@ -9,7 +9,7 @@ export const IngredientPrimary = ({ ingredient }) => {
         style={{ "background": "radial-gradient(circle, var(--secondary-bg) 10%, transparent 70%)" }}
       >
         {
-          ingredient.src ?
+          ingredient ?
             <Image
               className='max-h-[70%] w-auto h-auto max-w-[70%]'
               width={100}

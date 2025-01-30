@@ -39,34 +39,33 @@ const Box = ({ children }) => {
     )
 }
 
-const LongBoxWithSideBox = ({ children, title }) => {
+const LongBox = ({ children, title, className }) => {
     return (
-        <div className="flex items-center justify-center flex-col">
-            <div
-                className={`
-                pt-2
-                px-2
-                bg-secondary-glass
-                z-10 
-                rounded-t-[16px]
-                border-1
-                border-solid
-                border-neon-glass
-                shadow-neon-glass
-                `}>
-                <div
-                    className={`
-                    px-10 
-                    py-2 
-                    bg-primary 
-                    mb-[-16px] 
-                    z-10 
+        <div className={`flex items-center justify-center flex-col ${className}`}>
+            <div className={`
+                    pt-2
+                    px-2
+                    bg-secondary-glass
+                    z-20 
                     rounded-t-[16px]
-                    border-[1px]
+                    border-1
                     border-solid
-                    border-neon
-                    shadow-neon
+                    border-neon-glass
+                    shadow-neon-glass
+                    border-b-0
                 `}>
+                <div className={`
+                        px-10 
+                        py-2 
+                        bg-primary 
+                        mb-[-16px] 
+                        z-10 
+                        rounded-t-[16px]
+                        border-[1px]
+                        border-solid
+                        border-neon
+                        shadow-neon
+                    `}>
 
                     <h1 className="text-3xl">
                         {title}
@@ -75,11 +74,49 @@ const LongBoxWithSideBox = ({ children, title }) => {
             </div>
             <div
                 className={`
-            z-0
-            max-w-full
+                    z-0
+                    max-w-full
+                    rounded-[32px]
+                    w-[480px]
+                    h-[640px]
+                    p-4
+                    bg-secondary-glass
+                    flex
+                    items-center
+                    border-1
+                    border-solid
+                    border-neon-glass
+                    shadow-neon-glass
+                    max-md:w-screen
+                    max-md:h-screen
+                `}
+            >
+                <div className={`
+                    flex
+                    flex-col
+                    w-full
+                    h-full
+                    shadow-neon
+                    rounded-[50px]
+                    border-[1px]
+                    border-solid
+                    border-neon
+                    bg-primary
+                    max-md:flex-col
+                `}>
+                    {children}
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const SmallBox = ({children, className}) => {
+    return (
+        <div className={`
             rounded-[32px]
-            w-[480px]
-            h-[640px]
+            w-[360px]
+            h-[250px]
             p-4
             bg-secondary-glass
             flex
@@ -88,14 +125,13 @@ const LongBoxWithSideBox = ({ children, title }) => {
             border-solid
             border-neon-glass
             shadow-neon-glass
-            max-md:w-screen
-            max-md:h-screen
-        `}
-            >
-                <div
-                    className={`
+            ${className}
+        `}>
+            <div
+                className={`
                 flex
                 flex-col
+                items-center
                 w-full
                 h-full
                 shadow-neon
@@ -105,10 +141,9 @@ const LongBoxWithSideBox = ({ children, title }) => {
                 border-neon
                 bg-primary
                 max-md:flex-col
-                `}
-                >
-                    {children}
-                </div>
+            `}
+            >
+                {children}
             </div>
         </div>
     )
@@ -116,5 +151,6 @@ const LongBoxWithSideBox = ({ children, title }) => {
 
 export {
     Box,
-    LongBoxWithSideBox
+    LongBox,
+    SmallBox
 }
