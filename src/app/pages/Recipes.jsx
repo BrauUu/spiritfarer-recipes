@@ -77,23 +77,30 @@ export default function Recipes({ changeActualScreen }) {
 
     useEffect(() => {
         async function fetchData() {
-            const response = await api.getAllRecipes()
-            const data = await response.json()
-            setDishesList(data)
-            localStorage.setItem('dishesList', JSON.stringify(data))
+            try {
+                const response = await api.getAllRecipes()
+                const data = await response.json()
+                setDishesList(data)
+                localStorage.setItem('dishesList', JSON.stringify(data))
+            } catch (error) {
+
+            } finally {
+                setIsLoading(false)
+            }
         }
 
-        if (isLoading) {
-            setTimeout(() => {
-                setIsLoading(false)
-            }, 2500)
-        }
         if (!localStorage.getItem('dishesList')) {
+            setIsLoading
             fetchData()
             return
         }
 
         setDishesList(() => {
+            if (isLoading) {
+                setTimeout(() => {
+                    setIsLoading(false)
+                }, 3000)
+            }
             try {
                 return JSON.parse(localStorage.getItem('dishesList')) || [];
             } catch {

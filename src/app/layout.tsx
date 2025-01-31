@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import localFont from 'next/font/local'
 
 import "./globals.css";
@@ -21,6 +20,11 @@ const titleFont = localFont({
   src: '../../public/fonts/lora.ttf',
   variable: "--font-title",
 })
+
+export const metadata = {
+  title: "📝 Spiritfarer: Recipes Book",
+  description: "Your favorite dishes are here",
+};
 
 export default function RootLayout({
   children,

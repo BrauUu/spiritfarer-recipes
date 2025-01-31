@@ -36,28 +36,35 @@ export default function Cooking({ changeActualScreen }) {
     };
 
     useMetadata(metadata)
+
     useEffect(() => {
         async function fetchData() {
-            const response = await api.getAllIngredients()
-            const data = await response.json()
-            setIngredientsList(data)
-            localStorage.setItem('ingredientsList', JSON.stringify(data))
+            try {
+                const response = await api.getAllIngredients()
+                const data = await response.json()
+                setIngredientsList(data)
+                localStorage.setItem('ingredientsList', JSON.stringify(data))
+            } catch (error) {
+
+            } finally {
+                setIsLoading(false)
+            }
         }
 
         if (!localStorage.getItem('ingredientsList')) {
             setIsLoading(true)
             fetchData()
-            setIsLoading(false)
             return
         }
 
         setIngredientsList(() => {
             try {
-                return JSON.parse(localStorage.getItem('ingredientsList')) || [];
+                return JSON.parse(localStorage.getItem('ingredientsList'));
             } catch {
                 return [];
             }
         })
+
 
     }, [])
 
@@ -69,57 +76,91 @@ export default function Cooking({ changeActualScreen }) {
                     :
                     <div className="w-full h-full flex bg-fade flex-row items-center pl-[50%]">
                         <LongBox title='Ingredientes' className={'translate-x-[-50%]'}>
-                            <div className="h-14  mx-12 flex flex-row justify-around items-center">
-                                <Image
-                                    className={`h-14 w-auto cursor-pointer px-4 py-3`}
-                                    width={36}
-                                    height={36}
-                                    src={Grains.src}
-                                    alt={'Um ícone de um trigo, representando grãos.'}
-                                ></Image>
-                                <Image
-                                    className={`h-14 w-auto cursor-pointer px-4 py-3`}
-                                    width={36}
-                                    height={36}
-                                    src={Ingredients.src}
-                                    alt={'Um ícone de um jarro, representando ingredientes.'}
-                                ></Image>
-                                <Image
-                                    className={`h-14 w-auto cursor-pointer px-4 py-3`}
-                                    width={36}
-                                    height={36}
-                                    src={Fish.src}
-                                    alt={'Um ícone de um peixe, representando peixes.'}
-                                ></Image>
-                                <Image
-                                    className={`h-14 w-auto cursor-pointer px-4 py-3`}
-                                    width={36}
-                                    height={36}
-                                    src={FruitsAndVeggies.src}
-                                    alt={'Um ícone de uma cenoura e tomate, representando frutas e verduras.'}
-                                ></Image>
-                            </div>
-                            <div className="mx-5">
-                                <Line />
-                            </div>
-                            <div className="pb-5 w-full flex overflow-hidden justify-center">
-                                <div className="grid grid-cols-4-70 auto-rows-[70px] p-4 overflow-y-scroll gap-x-5 gap-y-2">
-                                    {
-                                        ingredientsList.map((ingredient, i) => {
-                                            return <IngredientPrimary ingredient={ingredient} key={i}></IngredientPrimary>
-                                        })
-                                    }
+                            <div className="px-5 flex flex-col grow">
+                                <div className="h-14 mx-12 flex flex-row justify-around items-center">
+                                    <Image
+                                        className={`h-14 w-auto cursor-pointer px-4 py-3`}
+                                        width={36}
+                                        height={36}
+                                        src={Grains.src}
+                                        alt={'Um ícone de um trigo, representando grãos.'}
+                                    ></Image>
+                                    <Image
+                                        className={`h-14 w-auto cursor-pointer px-4 py-3`}
+                                        width={36}
+                                        height={36}
+                                        src={Ingredients.src}
+                                        alt={'Um ícone de um jarro, representando ingredientes.'}
+                                    ></Image>
+                                    <Image
+                                        className={`h-14 w-auto cursor-pointer px-4 py-3`}
+                                        width={36}
+                                        height={36}
+                                        src={Fish.src}
+                                        alt={'Um ícone de um peixe, representando peixes.'}
+                                    ></Image>
+                                    <Image
+                                        className={`h-14 w-auto cursor-pointer px-4 py-3`}
+                                        width={36}
+                                        height={36}
+                                        src={FruitsAndVeggies.src}
+                                        alt={'Um ícone de uma cenoura e tomate, representando frutas e verduras.'}
+                                    ></Image>
                                 </div>
+                                <Line />
+                                <div className="w-full h-[282px] flex flex-col overflow-hidden items-center">
+                                    <div className="grid grid-cols-4-70 auto-rows-[70px] p-4 overflow-y-scroll gap-x-5 gap-y-2">
+                                        {
+                                            ingredientsList.map((ingredient, i) => {
+                                                return <IngredientPrimary ingredient={ingredient} key={i}></IngredientPrimary>
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                                <Line />
+                                {
+                                    ingredientsList[0] ?
+                                        <div className="flex flex-col grow">
+                                            <div className="flex justify-start gap-1 items-center h-[32px] bg-secondary mt-2">
+                                                <span className="h-full w-1 bg-neon"></span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
+                                                    <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clipRule="evenodd" />
+                                                </svg>
+
+                                                <div>{ingredientsList[0].name}</div>
+                                            </div>
+                                            <div className="flex grow items-center text-secondary">
+                                                <p className="text-center">{ingredientsList[0].description}</p>
+                                            </div>
+                                        </div>
+                                        :
+                                        undefined
+                                }
                             </div>
                         </LongBox>
                         <SmallBox className={'translate-x-[-60%]'} >
-                            <h2 className="py-2">Cozinha</h2>
-                            <Line/>
-                            <div className="flex justify-center flex-row pt-7 gap-6 pb-2">
-                                <IngredientPrimary ingredient={selectedIngredient[0]}></IngredientPrimary>
-                                <IngredientPrimary ingredient={selectedIngredient[1]}></IngredientPrimary>
-                            </div>
-                            <div className="w-[164px] h-10 bg-neon">
+                            <div className="flex flex-col items-center w-full">
+                                <h2 className="py-2">Cozinha</h2>
+                                <Line />
+                                <div className="flex justify-center flex-row py-4 gap-6 ">
+                                    <IngredientPrimary ingredient={selectedIngredient[0]}></IngredientPrimary>
+                                    <IngredientPrimary ingredient={selectedIngredient[1]}></IngredientPrimary>
+                                </div>
+                                <div className="
+                                    py-[6px]
+                                    px-[6px]
+                                    bg-secondary-glass
+                                    rounded-[12px]
+                                    border-1
+                                    border-solid
+                                    border-neon-glass
+                                    shadow-neon-glass
+                                    border-b-0"
+                                >
+                                    <div className="w-[164px] h-10 rounded-lg bg-neon text-gray-900 flex items-center justify-center">
+                                        Cozinhar
+                                    </div>
+                                </div>
                             </div>
                         </SmallBox>
                         <div

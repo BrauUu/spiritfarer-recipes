@@ -115,8 +115,6 @@ const SmallBox = ({children, className}) => {
     return (
         <div className={`
             rounded-[32px]
-            w-[360px]
-            h-[250px]
             p-4
             bg-secondary-glass
             flex
@@ -130,10 +128,10 @@ const SmallBox = ({children, className}) => {
             <div
                 className={`
                 flex
+                w-[320px]
+                h-[225px]
                 flex-col
                 items-center
-                w-full
-                h-full
                 shadow-neon
                 rounded-[50px]
                 border-[1px]

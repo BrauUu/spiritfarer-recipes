@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 export const IngredientPrimary = ({ ingredient }) => {
   return (
-    <div className="border-secondary-neon border-[1px] border-solid mb-2 rounded-xl h-[70px] w-[70px]">
+    <div className="border-secondary-neon border-[1px] border-solid  rounded-xl h-[70px] w-[70px]">
       <div
         className="flex justify-center items-center rounded-full w-full h-full"
         style={{ "background": "radial-gradient(circle, var(--secondary-bg) 10%, transparent 70%)" }}

@@ -4,7 +4,7 @@ import React from "react";
 export default function Line(){
   return (
     <div 
-      className="bg-neon shadow-neon-alter h-[2px] w-[calc(100%-40px)] mx-5"
+      className="bg-neon shadow-neon-alter h-[2px] w-full"
     ></div>
   )
 }
