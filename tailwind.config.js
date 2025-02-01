@@ -1,5 +1,3 @@
-import type { Config } from "tailwindcss";
-
 export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -27,6 +25,7 @@ export default {
       },
       backgroundColor: {
         'neon': 'var(--primary-neon);',
+        'neon-glass': 'var(--primary-neon-glass)',
         'primary': 'var(--primary-bg);',
         'primary-glass': 'var(--primary-bg-glass)',
         'secondary': 'var(--secondary-bg);',
@@ -44,4 +43,4 @@ export default {
     },
   },
   plugins: [],
-} satisfies Config;
+};

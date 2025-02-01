@@ -69,14 +69,14 @@ export default function Cooking({ changeActualScreen }) {
     }, [])
 
     return (
-        <>
+        <div className="w-full h-full bg-fade">
             {
                 isLoading ?
                     <Loading />
                     :
-                    <div className="w-full h-full flex bg-fade flex-row items-center pl-[50%]">
+                    <div className="h-full flex flex-row items-center pl-[50%]">
                         <LongBox title='Ingredientes' className={'translate-x-[-50%]'}>
-                            <div className="px-5 flex flex-col grow">
+                            <div className="px-6 flex flex-col grow">
                                 <div className="h-14 mx-12 flex flex-row justify-around items-center">
                                     <Image
                                         className={`h-14 w-auto cursor-pointer px-4 py-3`}
@@ -139,7 +139,7 @@ export default function Cooking({ changeActualScreen }) {
                             </div>
                         </LongBox>
                         <SmallBox className={'translate-x-[-60%]'} >
-                            <div className="flex flex-col items-center w-full">
+                            <div className="flex flex-col items-center w-full px-6">
                                 <h2 className="py-2">Cozinha</h2>
                                 <Line />
                                 <div className="flex justify-center flex-row py-4 gap-6 ">
@@ -147,9 +147,8 @@ export default function Cooking({ changeActualScreen }) {
                                     <IngredientPrimary ingredient={selectedIngredient[1]}></IngredientPrimary>
                                 </div>
                                 <div className="
-                                    py-[6px]
-                                    px-[6px]
-                                    bg-secondary-glass
+                                    p-[5px]
+                                    bg-neon-glass
                                     rounded-[12px]
                                     border-1
                                     border-solid
@@ -172,6 +171,6 @@ export default function Cooking({ changeActualScreen }) {
                         </div>
                     </div>
             }
-        </>
+        </div>
     )
 }

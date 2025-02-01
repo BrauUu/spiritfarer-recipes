@@ -25,12 +25,11 @@ export default function Recipes({ changeActualScreen }) {
     const [selectedDish, setSelectedDish] = useState(false)
     const [selectedDishIndex, setSelectedDishIndex] = useState()
 
-    const metadata = {
+    useMetadata({
         title: "📝 Spiritfarer: Recipes Book",
         description: "Your favorite dishes are here",
-    };
+    });
 
-    useMetadata(metadata)
     useEffect(() => {
         const activeDishElement = document.querySelector('.active')
         if (activeDishElement) {
@@ -111,15 +110,15 @@ export default function Recipes({ changeActualScreen }) {
     }, [])
 
     return (
-        <>
+        <div className="w-full h-full">
             {
                 isLoading ?
                     <Loading />
                     :
-                    <div className="w-full h-full flex justify-center items-center bg-fade">
+                    <div className="h-full bg-fade flex justify-center items-center">
                         <Box>
                             <div className="w-[55%] overflow-hidden flex flex-col max-md:w-full max-md:h-1/2">
-                                <Title type='primary' text='Receitas' classes='text-left pl-10' />
+                                <Title type='primary' text='Receitas' classes='text-left' />
                                 <div className="pb-5 w-full flex overflow-hidden justify-center">
                                     <div className="grid grid-cols-4-70 auto-rows-[70px] p-4 overflow-y-scroll gap-x-5 gap-y-2">
                                         {
@@ -148,6 +147,6 @@ export default function Recipes({ changeActualScreen }) {
                         </div>
                     </div>
             }
-        </>
+        </div>
     )
 }
