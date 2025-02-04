@@ -1,21 +1,18 @@
 import Line from "./Line";
-
 interface Title {
     type: 'primary' | 'secondary',
     text: string,
-    classes: string
 }
 
-export default function Title({ type, text, classes }: Title) {
+export default function Title({ type, text }: Title) {
 
     function getTitleType() {
         if (type == 'primary') {
-            return <h1 className={classes}> {text} </h1>
+            return <h1 className={`text-left text-shadow-neon`}> {text} </h1>
         }
         if (type == 'secondary') {
-            return <h2 className={classes}> {text} </h2>
+            return <h2 className={`text-center text-shadow-neon`}> {text} </h2>
         }
-        return <h3 className={classes}> {text} </h3>
     }
 
     return (

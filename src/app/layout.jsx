@@ -49,9 +49,9 @@ export default function RootLayout({children}) {
   }
 
   return (
-    <html lang="en">
+    <html lang="pt-br">
       <body
-        className={`${defaultFont.className} bg-no-repeat bg-center bg-cover`}
+        className={`${defaultFont.className} bg-no-repeat bg-center bg-cover h-screen`}
         style={{backgroundImage: `url(${getBackgroundImage()})`}}
       >
         {children}

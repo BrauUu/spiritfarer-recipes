@@ -65,6 +65,7 @@ const LongBox = ({ children, title, className }) => {
                         border-solid
                         border-neon
                         shadow-neon
+                        border-b-0
                     `}>
 
                     <h1 className="text-3xl">

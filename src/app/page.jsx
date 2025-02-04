@@ -1,35 +1,32 @@
-"use client"
+"use client";
 
-import React, { useState } from "react";
-
-import { Provider } from './Context'
-
+import React, { useState, useEffect } from "react";
+import { Provider } from "./Context";
 import Recipes from "./pages/Recipes";
 import Cooking from "./pages/Cooking";
 
 export default function App() {
+  const [actualScreen, setActualScreen] = useState(null);
 
-  const [actualScreen, setActualScreen] = useState("recipes")
+  useEffect(() => {
+    setActualScreen("recipes");
+  }, []);
 
   function changeActualScreen() {
-    if (actualScreen === 'recipes')
-      setActualScreen('cooking')
-    else if (actualScreen === 'cooking')
-      setActualScreen('recipes')
+    setActualScreen((prev) => (prev === "recipes" ? "cooking" : "recipes"));
   }
 
+  if (!actualScreen) return null
+
   return (
-    <div
-      className="h-screen flex justify-center items-center"
-    >
+    <div className="h-screen flex justify-center items-center">
       <Provider>
-        {
-          actualScreen === "recipes" ?
-            <Recipes changeActualScreen={changeActualScreen} />
-            :
-            <Cooking changeActualScreen={changeActualScreen} />
-        }
+        {actualScreen === "recipes" ? (
+          <Recipes changeActualScreen={changeActualScreen} />
+        ) : (
+          <Cooking changeActualScreen={changeActualScreen} />
+        )}
       </Provider>
     </div>
-  )
+  );
 }
