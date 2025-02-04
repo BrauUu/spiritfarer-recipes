@@ -14,7 +14,8 @@ import FruitsAndVeggies from '../../../public/images/ingredients/fruits_and_vegg
 import { LongBox, SmallBox } from '../components/Box'
 import Loading from "../components/Loading";
 import Line from "../components/Line";
-import { IngredientPrimary } from "../components/Ingredient";
+import Key from "../components/Key";
+import { IngredientPrimary, IngredientBox } from "../components/Ingredient";
 
 import api from '../api'
 
@@ -27,8 +28,14 @@ export default function Cooking({ changeActualScreen }) {
         setIsLoading
     } = useContext(Context)
 
-    const [selectedIngredient, setSelectedIngredient] = useState(0)
+    const [actualIngredient, setActualIngredient] = useState(null)
+    const [actualIngredientIndex, setActualIngredientIndex] = useState(0)
+
+    const [selectedIngredients, setSelectedIngredients] = useState([])
+    const [selectedIngredientsIndexex, setSelectedIngredientsIndexes] = useState([])
+
     const [selectedType, setSelectedType] = useState("Grãos")
+    const [filteredIngredientsList, setFilteredIngredientsList] = useState([])
 
     const metadata = {
         title: "🔥 Spiritfarer: Cooking Place",
@@ -75,6 +82,50 @@ export default function Cooking({ changeActualScreen }) {
 
     }, [])
 
+    useEffect(() => {
+        setFilteredIngredientsList(ingredientsList.filter((ingredient) => ingredient.type === selectedType))
+    }, [selectedType, ingredientsList])
+
+    useEffect(() => {
+        function changeActualIngredient(index) {
+            setActualIngredientIndex((prevIndex) => {
+                const newIndex = prevIndex + index;
+                if (newIndex < 0 || newIndex >= filteredIngredientsList.length) {
+                    return prevIndex;
+                }
+                setActualIngredient(filteredIngredientsList[newIndex]);
+                return newIndex;
+            });
+        }
+
+        const KEY_ACTIONS = {
+            'ArrowLeft': () => changeActualIngredient(-1),
+            'ArrowRight': () => changeActualIngredient(1),
+            'ArrowUp': () => changeActualIngredient(-4),
+            'ArrowDown': () => changeActualIngredient(4),
+        }
+
+        document.addEventListener('keydown', handleKeydown)
+
+        function handleKeydown(event) {
+            if (KEY_ACTIONS[event.key]) {
+                KEY_ACTIONS[event.key]();
+            }
+        }
+
+        changeActualIngredient(0)
+
+        return () => {
+            setActualIngredientIndex(0)
+            document.removeEventListener('keydown', handleKeydown);
+        };
+    }, [filteredIngredientsList]);
+
+    function setActualIngredientData(index, ingredient) {
+        setActualIngredientIndex(index)
+        setActualIngredient(ingredient)
+    }
+
     return (
         <div className="w-full h-full bg-fade">
             {
@@ -91,9 +142,9 @@ export default function Cooking({ changeActualScreen }) {
                                                 <Image
                                                     className={`h-14 w-auto cursor-pointer px-4 py-3 filter`}
                                                     style={
-                                                        selectedType == icon.name ? 
-                                                        {filter: 'invert(99%) sepia(96%) saturate(735%) hue-rotate(328deg) brightness(105%) contrast(99%) drop-shadow(0 0 8px var(--primary-neon-shadow))'} 
-                                                        : {filter: 'invert(90%) sepia(22%) saturate(268%) hue-rotate(10deg) brightness(92%) contrast(91%)'}}
+                                                        selectedType == icon.name ?
+                                                            { filter: 'invert(99%) sepia(96%) saturate(735%) hue-rotate(328deg) brightness(105%) contrast(99%) drop-shadow(0 0 8px var(--primary-neon-shadow))' }
+                                                            : { filter: 'invert(90%) sepia(22%) saturate(268%) hue-rotate(10deg) brightness(92%) contrast(91%)' }}
                                                     width={36}
                                                     height={36}
                                                     key={icon.id}
@@ -110,17 +161,15 @@ export default function Cooking({ changeActualScreen }) {
                                 <div className="w-full h-[282px] flex flex-col overflow-hidden items-center">
                                     <div className="grid grid-cols-4-70 auto-rows-[70px] p-4 overflow-y-scroll gap-x-5 gap-y-2">
                                         {
-                                            ingredientsList.map((ingredient, i) => {
-                                                if (ingredient.type == selectedType) {
-                                                    return <IngredientPrimary ingredient={ingredient} key={i}></IngredientPrimary>
-                                                }
+                                            filteredIngredientsList.map((ingredient, i) => {
+                                                return <IngredientPrimary ingredient={ingredient} key={i} index={i} setActualIngredientData={setActualIngredientData} actualIngredientIndex={actualIngredientIndex}></IngredientPrimary>
                                             })
                                         }
                                     </div>
                                 </div>
                                 <Line />
                                 {
-                                    ingredientsList[0] ?
+                                    actualIngredient ?
                                         <div className="flex flex-col grow">
                                             <div className="flex justify-start gap-1 items-center h-[32px] bg-secondary mt-2">
                                                 <span className="h-full w-1 bg-neon"></span>
@@ -128,15 +177,24 @@ export default function Cooking({ changeActualScreen }) {
                                                     <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clipRule="evenodd" />
                                                 </svg>
 
-                                                <div>{ingredientsList[0].name}</div>
+                                                <div>{actualIngredient.name}</div>
                                             </div>
                                             <div className="flex grow items-center text-secondary">
-                                                <p className="text-center">{ingredientsList[0].description}</p>
+                                                <p className="text-center">{actualIngredient.description}</p>
                                             </div>
                                         </div>
                                         :
                                         undefined
                                 }
+                            </div>
+                            <div className="h-14 w-full flex flex-col items-center">
+                                <div className="w-3/4 flex flex-col items-end">
+                                    <Line />
+                                    <div className="flex flex-row py-3 gap-3">
+                                        <Key char={'E'} label={"Mover"}></Key>
+                                        <Key char={'ESC'} label={"Remover"}></Key>
+                                    </div>
+                                </div>
                             </div>
                         </LongBox>
                         <SmallBox className={'translate-x-[-60%]'} >
@@ -144,8 +202,8 @@ export default function Cooking({ changeActualScreen }) {
                                 <h2 className="py-2">Cozinha</h2>
                                 <Line />
                                 <div className="flex justify-center flex-row py-4 gap-6 ">
-                                    <IngredientPrimary ingredient={selectedIngredient[0]}></IngredientPrimary>
-                                    <IngredientPrimary ingredient={selectedIngredient[1]}></IngredientPrimary>
+                                    <IngredientBox ingredient={selectedIngredients[0]}></IngredientBox>
+                                    <IngredientBox ingredient={selectedIngredients[1]}></IngredientBox>
                                 </div>
                                 <div className="
                                     p-[5px]
@@ -158,7 +216,8 @@ export default function Cooking({ changeActualScreen }) {
                                     border-b-0"
                                 >
                                     <div className="w-[164px] h-10 rounded-lg bg-neon text-gray-900 flex items-center justify-center">
-                                        Cozinhar
+                                        <Key char={'R'} size={'lg'}></Key>
+                                        <span className="ml-3">Cozinhar</span>
                                     </div>
                                 </div>
                             </div>
