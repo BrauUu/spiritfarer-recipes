@@ -30,8 +30,10 @@ export default function Cooking({ changeActualScreen }) {
 
     const [actualIngredient, setActualIngredient] = useState(null)
     const [actualIngredientIndex, setActualIngredientIndex] = useState(0)
+    const actualIngredientRef = useRef(null)
 
     const [selectedIngredients, setSelectedIngredients] = useState([])
+    const selectedIngredientsRef = useRef(null)
     const [selectedIngredientsIndexex, setSelectedIngredientsIndexes] = useState([])
 
     const [selectedType, setSelectedType] = useState("Grãos")
@@ -93,9 +95,34 @@ export default function Cooking({ changeActualScreen }) {
                 if (newIndex < 0 || newIndex >= filteredIngredientsList.length) {
                     return prevIndex;
                 }
-                setActualIngredient(filteredIngredientsList[newIndex]);
+                actualIngredientRef.current = filteredIngredientsList[newIndex]
+                setActualIngredient(actualIngredientRef.current);
                 return newIndex;
             });
+        }
+
+        function addIngredientToRecipe(ingredient) {
+            if(selectedIngredients.length >= 2){
+                return
+            }
+            setSelectedIngredients((prevIngredient) => {
+                if(prevIngredient.id == ingredient.id){
+                    selectedIngredientsRef.current = prevIngredient
+                    return prevIngredient
+                }
+                selectedIngredientsRef.current = [...prevIngredient, ingredient]
+                return [...prevIngredient, ingredient]
+            })
+        }
+
+        function removeIngredientFromRecipe(ingredient) {
+            const filteredSelectedIngredients = selectedIngredientsRef.current.filter((selectedIngredient) => selectedIngredient.id != ingredient.id)
+            console.log(filteredSelectedIngredients)
+            setSelectedIngredients(filteredSelectedIngredients)
+        }
+
+        function cookRecipe() {
+            //TODO: Verificar se os dois ingredientes juntos são uam receita, caso sim, exibir o resultado e atualizar na lista de pratos conhecidos
         }
 
         const KEY_ACTIONS = {
@@ -103,13 +130,16 @@ export default function Cooking({ changeActualScreen }) {
             'ArrowRight': () => changeActualIngredient(1),
             'ArrowUp': () => changeActualIngredient(-4),
             'ArrowDown': () => changeActualIngredient(4),
+            'KeyE': () => addIngredientToRecipe(actualIngredientRef.current),
+            'Escape': () => removeIngredientFromRecipe(actualIngredientRef.current),
+            'KeyR': () => cookRecipe()
         }
 
         document.addEventListener('keydown', handleKeydown)
 
         function handleKeydown(event) {
-            if (KEY_ACTIONS[event.key]) {
-                KEY_ACTIONS[event.key]();
+            if (KEY_ACTIONS[event.code]) {
+                KEY_ACTIONS[event.code]();
             }
         }
 
