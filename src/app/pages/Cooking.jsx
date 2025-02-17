@@ -22,6 +22,7 @@ import api from '../api'
 export default function Cooking({ changeActualScreen }) {
 
     const {
+        dishesList,
         ingredientsList,
         setIngredientsList,
         isLoading,
@@ -33,8 +34,6 @@ export default function Cooking({ changeActualScreen }) {
     const actualIngredientRef = useRef(null)
 
     const [selectedIngredients, setSelectedIngredients] = useState([])
-    const selectedIngredientsRef = useRef(null)
-    const [selectedIngredientsIndexex, setSelectedIngredientsIndexes] = useState([])
 
     const [selectedType, setSelectedType] = useState("Grãos")
     const [filteredIngredientsList, setFilteredIngredientsList] = useState([])
@@ -47,7 +46,7 @@ export default function Cooking({ changeActualScreen }) {
     const icons = [
         { id: 1, name: "Grãos", src: Grains.src, description: "Um ícone de um trigo, representando grãos." },
         { id: 2, name: "Ingredientes", src: Ingredients.src, description: "Um ícone de um jarro, representando ingredientes." },
-        { id: 3, name: "Peixes", src: Fish.src, description: "Um ícone de um peixe, representando peixes." },
+        { id: 3, name: "Pesca", src: Fish.src, description: "Um ícone de um peixe, representando peixes." },
         { id: 4, name: "Frutas e Verduras", src: FruitsAndVeggies.src, description: "Um ícone de uma cenoura e tomate, representando frutas e verduras." },
     ];
 
@@ -88,48 +87,64 @@ export default function Cooking({ changeActualScreen }) {
         setFilteredIngredientsList(ingredientsList.filter((ingredient) => ingredient.type === selectedType))
     }, [selectedType, ingredientsList])
 
-    useEffect(() => {
-        function changeActualIngredient(index) {
-            setActualIngredientIndex((prevIndex) => {
-                const newIndex = prevIndex + index;
-                if (newIndex < 0 || newIndex >= filteredIngredientsList.length) {
-                    return prevIndex;
-                }
-                actualIngredientRef.current = filteredIngredientsList[newIndex]
-                setActualIngredient(actualIngredientRef.current);
-                return newIndex;
-            });
-        }
-
-        function addIngredientToRecipe(ingredient) {
-            if(selectedIngredients.length >= 2){
-                return
+    function addIngredientToRecipe(ingredient) {
+        setSelectedIngredients(prevSelected => {
+            if (prevSelected.length === 2 || (prevSelected.length === 1 && prevSelected[0].id === ingredient.id)) {
+                return prevSelected;
             }
-            setSelectedIngredients((prevIngredient) => {
-                if(prevIngredient.id == ingredient.id){
-                    selectedIngredientsRef.current = prevIngredient
-                    return prevIngredient
-                }
-                selectedIngredientsRef.current = [...prevIngredient, ingredient]
-                return [...prevIngredient, ingredient]
-            })
-        }
+            return [...prevSelected, ingredient];
+        });
+    }
 
-        function removeIngredientFromRecipe(ingredient) {
-            const filteredSelectedIngredients = selectedIngredientsRef.current.filter((selectedIngredient) => selectedIngredient.id != ingredient.id)
-            console.log(filteredSelectedIngredients)
-            setSelectedIngredients(filteredSelectedIngredients)
-        }
+    function removeIngredientFromRecipe(ingredient) {
+        setSelectedIngredients(prevSelected =>
+            prevSelected.filter(selectedIngredient => selectedIngredient.id !== ingredient.id)
+        );
+    }
 
-        function cookRecipe() {
-            //TODO: Verificar se os dois ingredientes juntos são uam receita, caso sim, exibir o resultado e atualizar na lista de pratos conhecidos
+    function cookRecipe() {
+
+        const ingredientsListLenght = selectedIngredients.length
+
+        if (ingredientsListLenght == 0)
+            return
+
+        for (let dish of dishesList) {
+            const dishIngredients = dish.ingredients
+            const confirmedIngredients = new Set();
+
+            selectedIngredients.forEach(ingredient => {
+                dishIngredients.forEach(dishIngredient => {
+                    if (dishIngredient.ids.includes(ingredient.id)) {
+                        confirmedIngredients.add(dishIngredient.name);
+                    }
+                });
+            });
+
+            return confirmedIngredients.size === dishIngredients.length
+            
         }
+    }
+
+    function changeActualIngredient(index, isAdding) {
+        setActualIngredientIndex((prevIndex) => {
+            const newIndex = isAdding ? prevIndex + index : index
+            if (newIndex < 0 || newIndex >= filteredIngredientsList.length) {
+                return prevIndex;
+            }
+            actualIngredientRef.current = filteredIngredientsList[newIndex]
+            setActualIngredient(actualIngredientRef.current);
+            return newIndex;
+        });
+    }
+
+    useEffect(() => {
 
         const KEY_ACTIONS = {
-            'ArrowLeft': () => changeActualIngredient(-1),
-            'ArrowRight': () => changeActualIngredient(1),
-            'ArrowUp': () => changeActualIngredient(-4),
-            'ArrowDown': () => changeActualIngredient(4),
+            'ArrowLeft': () => changeActualIngredient(-1, true),
+            'ArrowRight': () => changeActualIngredient(1, true),
+            'ArrowUp': () => changeActualIngredient(-4, true),
+            'ArrowDown': () => changeActualIngredient(4, true),
             'KeyE': () => addIngredientToRecipe(actualIngredientRef.current),
             'Escape': () => removeIngredientFromRecipe(actualIngredientRef.current),
             'KeyR': () => cookRecipe()
@@ -142,19 +157,16 @@ export default function Cooking({ changeActualScreen }) {
                 KEY_ACTIONS[event.code]();
             }
         }
-
         changeActualIngredient(0)
 
         return () => {
-            setActualIngredientIndex(0)
             document.removeEventListener('keydown', handleKeydown);
         };
     }, [filteredIngredientsList]);
 
-    function setActualIngredientData(index, ingredient) {
-        setActualIngredientIndex(index)
-        setActualIngredient(ingredient)
-    }
+    useEffect(() => {
+
+    }, [])
 
     return (
         <div className="w-full h-full bg-fade">
@@ -192,7 +204,7 @@ export default function Cooking({ changeActualScreen }) {
                                     <div className="grid grid-cols-4-70 auto-rows-[70px] p-4 overflow-y-scroll gap-x-5 gap-y-2">
                                         {
                                             filteredIngredientsList.map((ingredient, i) => {
-                                                return <IngredientPrimary ingredient={ingredient} key={i} index={i} setActualIngredientData={setActualIngredientData} actualIngredientIndex={actualIngredientIndex}></IngredientPrimary>
+                                                return <IngredientPrimary ingredient={ingredient} key={i} index={i} changeActualIngredient={changeActualIngredient} actualIngredientIndex={actualIngredientIndex}></IngredientPrimary>
                                             })
                                         }
                                     </div>
@@ -228,7 +240,9 @@ export default function Cooking({ changeActualScreen }) {
                             </div>
                         </LongBox>
                         <SmallBox className={'translate-x-[-60%]'} >
-                            <div className="flex flex-col items-center w-full px-6">
+                            <div
+                                className="flex flex-col items-center w-full px-6 pointer"
+                            >
                                 <h2 className="py-2">Cozinha</h2>
                                 <Line />
                                 <div className="flex justify-center flex-row py-4 gap-6 ">
@@ -245,7 +259,10 @@ export default function Cooking({ changeActualScreen }) {
                                     shadow-neon-glass
                                     border-b-0"
                                 >
-                                    <div className="w-[164px] h-10 rounded-lg bg-neon text-gray-900 flex items-center justify-center">
+                                    <div
+                                        className="w-[164px] h-10 rounded-lg bg-neon text-gray-900 flex items-center justify-center cursor-pointer"
+                                        onClick={cookRecipe}
+                                    >
                                         <Key char={'R'} size={'lg'}></Key>
                                         <span className="ml-3">Cozinhar</span>
                                     </div>
