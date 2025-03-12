@@ -1,9 +1,9 @@
 import Image from 'next/image'
 
-export default function Dish({index, dish, setSelectedDishData, selectedDishIndex}) {
+export default function Dish({ index, dish, setSelectedDishData, selectedDishIndex }) {
 
   return (
-    <div 
+    <div
       id={`bookId-${dish.bookId}`}
       className={`
       flex
