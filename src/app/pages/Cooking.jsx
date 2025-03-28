@@ -145,9 +145,7 @@ export default function Cooking({ changeActualScreen }) {
     }
 
     function cookRecipe() {
-        console.log(isAlertVisible.current)
         if (isAlertVisible.current) {
-            console.log('visivel')
             return
         }
 
@@ -169,8 +167,7 @@ export default function Cooking({ changeActualScreen }) {
                 });
             });
 
-            if (confirmedIngredients.size === selectedIngredients.length == dishIngredients.length) {
-
+            if (confirmedIngredients.size == selectedIngredients.length && confirmedIngredients.size == dishIngredients.length) {
                 setCookedDish(dish)
                 break
             }
