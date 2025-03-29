@@ -5,6 +5,7 @@
 * {
   margin: 0;
   line-height: 1.15;
+  text-decoration: none;
 }
 
 :root {
@@ -18,13 +19,15 @@
   --primary-neon-shadow: #e19e48;
   --secondary-neon: #DADADA;
 
+  --fade: #00000041;
 
   --primary-text: #fef8a7;
   --secondary-text: #ddd7b5;
   --highlight-text: #e2a430;
 
-  --font-title: 'Nunito';
-  --font-default: 'Lora';
+  --font-title: 'Lora';
+  --font-default: 'Nunito';
+
 }
 
 body{

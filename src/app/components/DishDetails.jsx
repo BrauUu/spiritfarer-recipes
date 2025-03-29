@@ -1,8 +1,7 @@
 import React from "react";
 import Image from 'next/image'
 
-import Line from "./Line";
-import Ingredient from "./Ingredient";
+import { IngredientSecondary } from "./Ingredient";
 import Title from "./Title";
 
 export default function DishDetails({ selectedDish }) {
@@ -24,10 +23,10 @@ export default function DishDetails({ selectedDish }) {
           <span>{selectedDish.description}</span>
           <div className="flex flex-col">
             <span>
-              Tamanho: <strong className="text-highlight font-semibold">{selectedDish.size.toUpperCase()}</strong>
+              Tamanho: <span className="text-highlight font-semibold uppercase">{selectedDish.size}</span>
             </span>
             <span>
-              Tipo: <strong className="text-highlight font-semibold">{selectedDish.type.toUpperCase()}</strong>
+              Tipo: <span className="text-highlight font-semibold uppercase">{selectedDish.type}</span>
             </span>
           </div>
         </div>
@@ -35,7 +34,7 @@ export default function DishDetails({ selectedDish }) {
       <div className="flex justify-center text-secondary gap-2 max-md:flex-wrap">
         {
           selectedDish.ingredients.map((ingredient, i) => {
-            return <Ingredient ingredient={ingredient} key={i} />
+            return <IngredientSecondary ingredient={ingredient} key={i} />
           })
         }
       </div>

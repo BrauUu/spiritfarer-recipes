@@ -1,7 +1,80 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
-export default function Ingredient({ ingredient }) {
+export const IngredientPrimary = ({ index, ingredient, changeActualIngredient, actualIngredientIndex }) => {
+  return (
+    <div className={`
+      ${index == actualIngredientIndex ? '' : 'border-secondary-neon border-[1px] border-solid '} 
+      rounded-xl 
+      h-[70px] 
+      w-[70px]`}>
+      <div
+        className={`
+          flex 
+          justify-center 
+          items-center 
+          rounded-full
+          cursor-pointer
+          w-full 
+          h-full
+          ${index == actualIngredientIndex ? 'active bg-neon rounded-full shadow-neon-lg' : 'bg-[radial-gradient(circle,_var(--secondary-bg)_10%,_transparent_70%)]'}  
+        `}
+        onClick={() => changeActualIngredient(index)}
+      >
+        {
+          ingredient ?
+            <Image
+              className='max-h-[70%] w-auto h-auto max-w-[70%]'
+              width={100}
+              height={100}
+              alt={`Uma imagem de um(a) ${ingredient.name}`}
+              src={ingredient.src}
+              loading='eager'
+              decoding={'sync'}
+            ></Image>
+            :
+            undefined
+        }
+      </div>
+    </div>
+  )
+}
+
+export const IngredientBox = ({ ingredient }) => {
+  return (
+    <div className="border-secondary-neon border-[1px] border-solid  rounded-xl h-[70px] w-[70px]">
+      <div
+        className={`
+      flex 
+      justify-center 
+      items-center 
+      rounded-full
+      cursor-pointer
+      w-full 
+      h-full
+      bg-[radial-gradient(circle,_var(--secondary-bg)_10%,_transparent_70%)]
+    `}
+      >
+        {
+          ingredient ?
+            <Image
+              className='max-h-[70%] w-auto h-auto max-w-[70%]'
+              width={100}
+              height={100}
+              alt={`Uma imagem de um(a) ${ingredient.name}`}
+              src={ingredient.src}
+              loading='eager'
+              decoding={'sync'}
+            ></Image>
+            :
+            undefined
+        }
+      </div>
+    </div>
+  )
+}
+
+export const IngredientSecondary = ({ ingredient }) => {
 
   const [ingredientName, setIngredientName] = useState()
   const [ingredientImage, setIngredientImage] = useState()
@@ -31,22 +104,21 @@ export default function Ingredient({ ingredient }) {
     <div className={`flex flex-col justify-start items-center`}>
       <div className="border-secondary-neon border-[1px] border-solid mb-2 rounded-xl h-[70px] w-[70px]">
         <div
-          className="flex justify-center items-center rounded-full w-full h-full"
-          style={{ "background": "radial-gradient(circle, var(--secondary-bg) 10%, transparent 70%)" }}
+          className="flex justify-center items-center rounded-full w-full h-full bg-[radial-gradient(circle,_var(--secondary-bg)_10%,_transparent_70%)]"
         >
           {
             ingredientImage ?
-            <Image
-              className='max-h-[70%] w-auto h-auto max-w-[70%]'
-              width={100}
-              height={100}
-              alt={`Uma imagem de um(a) ${ingredient.name}`}
-              src={ingredientImage}
-              loading='eager'
-              decoding={'sync'}
-            ></Image>
-            :
-            undefined
+              <Image
+                className='max-h-[70%] w-auto h-auto max-w-[70%]'
+                width={100}
+                height={100}
+                alt={`Uma imagem de um(a) ${ingredient.name}`}
+                src={ingredientImage}
+                loading='eager'
+                decoding={'sync'}
+              ></Image>
+              :
+              undefined
           }
         </div>
       </div>
