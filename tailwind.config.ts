@@ -36,7 +36,7 @@ export default {
         'fade': 'var(--fade)'
       },
       gridTemplateColumns: {
-        '4-max': 'repeat(4, minmax(0, 70px));'
+        'auto-max-70': 'repeat(auto-fit, 70px);'
       },
       fill: {
         'neon': 'var(--primary-neon);',

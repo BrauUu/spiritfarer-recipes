@@ -20,7 +20,8 @@ const Box = ({ children }) => {
             <div
                 className={`
                 flex
-                flex-row
+                items-center
+                md:flex-row
                 w-full
                 h-full
                 md:shadow-neon
@@ -29,7 +30,7 @@ const Box = ({ children }) => {
                 md:border-solid
                 md:border-neon
                 bg-primary
-                max-md:flex-col
+                flex-col
                 `}
             >
                 {children}
@@ -77,8 +78,8 @@ const LongBox = ({ children, title, className }) => {
                     z-0
                     max-w-full
                     rounded-[32px]
-                    w-[480px]
-                    h-[640px]
+                    md:w-[480px]
+                    md:h-[640px]
                     p-4
                     bg-secondary-glass
                     flex
@@ -87,13 +88,12 @@ const LongBox = ({ children, title, className }) => {
                     border-solid
                     border-neon-glass
                     shadow-neon-glass
-                    max-md:w-screen
-                    max-md:h-screen
+                    w-screen
+                    h-screen
                 `}
             >
                 <div className={`
                     flex
-                    flex-col
                     w-full
                     h-full
                     shadow-neon
@@ -102,7 +102,7 @@ const LongBox = ({ children, title, className }) => {
                     border-solid
                     border-neon
                     bg-primary
-                    max-md:flex-col
+                    flex-col
                 `}>
                     {children}
                 </div>
@@ -138,7 +138,6 @@ const SmallBox = ({children, className}) => {
                 border-solid
                 border-neon
                 bg-primary
-                max-md:flex-col
             `}
             >
                 {children}

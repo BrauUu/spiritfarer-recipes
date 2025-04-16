@@ -6,12 +6,12 @@ import Title from "./Title";
 
 export default function DishDetails({ selectedDish }) {
   return (
-    <div className="w-full gap-2 px-2 md:py-8 flex flex-col justify-between items-center text-center py-0">
+    <div className="w-full gap-2 px-2 md:py-8 flex flex-col justify-between items-center text-center py-2">
       <div className="w-full flex flex-col items-center">
-        <div className="w-full flex flex-col items-center py-4">
+        <div className="w-full flex flex-col items-center py-2 md:py-4">
           <Image
             alt={'Uma imagem de um delicioso prato de ' + selectedDish.name}
-            className="h-[80px] w-auto"
+            className="h-16 md:h-[80px] w-auto"
             src={selectedDish.src}
             height={100}
             width={100}

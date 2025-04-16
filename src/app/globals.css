@@ -14,6 +14,10 @@
     @apply font-medium font-[family-name:var(--font-title)]
   }
 
+  body{
+    @apply text-base md:text-xl font-normal text-[var(--primary-text)]
+  }
+
 }
 
 * {
@@ -42,12 +46,4 @@
   --font-title: 'Lora';
   --font-default: 'Nunito';
 
-}
-
-body{
-
-  font-size: 20px;
-  font-weight: 400;
-
-  color: var(--primary-text);
 }

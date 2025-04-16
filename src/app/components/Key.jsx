@@ -7,7 +7,8 @@ export default function Key({ char, label, size }) {
     return (
         <div className="flex flex-row gap-2">
             <div className={`
-                flex 
+                hidden
+                md:flex 
                 items-center 
                 justify-center 
                 text-gray-300 
