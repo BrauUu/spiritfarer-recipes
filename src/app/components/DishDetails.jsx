@@ -6,7 +6,7 @@ import Title from "./Title";
 
 export default function DishDetails({ selectedDish }) {
   return (
-    <div className="w-full gap-2 px-2 py-8 flex flex-col justify-between items-center text-center max-md:py-0 max-md:flex-row">
+    <div className="w-full gap-2 px-2 md:py-8 flex flex-col justify-between items-center text-center py-0">
       <div className="w-full flex flex-col items-center">
         <div className="w-full flex flex-col items-center py-4">
           <Image
@@ -21,7 +21,7 @@ export default function DishDetails({ selectedDish }) {
         </div>
         <div className="text-secondary font-light flex flex-col gap-y-2 pt-2 ">
           <span>{selectedDish.description}</span>
-          <div className="flex flex-col">
+          <div className="flex md:gap-0 flex-col">
             <span>
               Tamanho: <span className="text-highlight font-semibold uppercase">{selectedDish.size}</span>
             </span>
@@ -31,7 +31,7 @@ export default function DishDetails({ selectedDish }) {
           </div>
         </div>
       </div>
-      <div className="flex justify-center text-secondary gap-2 max-md:flex-wrap">
+      <div className="flex justify-center text-secondary gap-2">
         {
           selectedDish.ingredients.map((ingredient, i) => {
             return <IngredientSecondary ingredient={ingredient} key={i} />

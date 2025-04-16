@@ -2,20 +2,19 @@ const Box = ({ children }) => {
     return (
         <div
             className={`
-            max-w-full
             rounded-[32px]
-            w-[820px]
-            h-[580px]
-            p-4
-            bg-secondary-glass
+            md:w-[820px]
+            md:h-[580px]
+            md:p-4
+            md:bg-secondary-glass
             flex
             items-center
-            border-1
-            border-solid
-            border-neon-glass
-            shadow-neon-glass
-            max-md:w-screen
-            max-md:h-screen
+            md:border-1
+            md:border-solid
+            md:border-neon-glass
+            md:shadow-neon-glass
+            w-screen
+            h-screen
         `}
         >
             <div
@@ -24,11 +23,11 @@ const Box = ({ children }) => {
                 flex-row
                 w-full
                 h-full
-                shadow-neon
-                rounded-[50px]
-                border-[1px]
-                border-solid
-                border-neon
+                md:shadow-neon
+                md:rounded-[50px]
+                md:border-[1px]
+                md:border-solid
+                md:border-neon
                 bg-primary
                 max-md:flex-col
                 `}

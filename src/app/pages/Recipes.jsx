@@ -124,7 +124,7 @@ export default function Recipes({ changeActualScreen }) {
                             <div className="w-[55%] flex flex-col max-md:w-full max-md:h-1/2">
                                 <Title type='primary' text='Receitas' classes='text-left' />
                                 <div className="pb-5 w-full flex overflow-hidden justify-center">
-                                    <div className="grid grid-cols-4-70 auto-rows-[70px] p-4 overflow-y-scroll gap-x-5 gap-y-2">
+                                    <div className="grid grid-cols-4-max p-4 overflow-y-scroll gap-x-5 gap-y-2">
                                         {
                                             dishesList.map((dish, i) => {
                                                 return <Dish dish={dish} key={i} index={i} selectedDishIndex={selectedDishIndex} setSelectedDishData={setSelectedDishData} />
@@ -133,7 +133,20 @@ export default function Recipes({ changeActualScreen }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-[45%] bg-primary-glass mr-5 my-5 flex justify-center h-[calc(100%-40px)] rounded-2xl border-t border-l border-solid border-secondary max-md:h-1/2 max-md:w-[calc(100%-40px)] max-md:mx-5 max-md:mt-0">
+                            <div className={`
+                                md:w-[45%] 
+                                bg-primary-glass 
+                                mr-5 my-5 
+                                flex justify-center 
+                                md:h-[calc(100%-40px)] 
+                                rounded-2xl border-t border-l border-solid border-secondary 
+                                h-1/2 
+                                w-[calc(100%-40px)] 
+                                md:mx-0
+                                md:mt-5
+                                mx-5 
+                                mt-0
+                            `}>
                                 {
                                     selectedDish ?
                                         <DishDetails selectedDish={selectedDish} />

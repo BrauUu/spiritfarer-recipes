@@ -254,7 +254,7 @@ export default function Cooking({ changeActualScreen }) {
                                 </div>
                                 <Line />
                                 <div className="w-full h-[282px] flex flex-col overflow-hidden items-center">
-                                    <div className="grid grid-cols-4-70 auto-rows-[70px] p-4 overflow-y-scroll gap-x-5 gap-y-2">
+                                    <div className="grid grid-cols-4-max p-4 overflow-y-scroll gap-x-5 gap-y-2">
                                         {
                                             filteredIngredientsList.map((ingredient, i) => {
                                                 return <IngredientPrimary ingredient={ingredient} key={i} index={i} changeActualIngredient={changeActualIngredient} actualIngredientIndex={actualIngredientIndex}></IngredientPrimary>

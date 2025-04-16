@@ -13,6 +13,7 @@ export default function Dish({ index, dish, setSelectedDishData, selectedDishInd
       hover:bg-neon 
       hover:rounded-full 
       hover:shadow-neon-lg
+      aspect-square 
       p-1
       ${index == selectedDishIndex ? 'active bg-neon rounded-full shadow-neon-lg' : ''}
     `}

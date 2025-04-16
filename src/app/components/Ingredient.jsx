@@ -6,6 +6,7 @@ export const IngredientPrimary = ({ index, ingredient, changeActualIngredient, a
     <div className={`
       ${index == actualIngredientIndex ? '' : 'border-secondary-neon border-[1px] border-solid '} 
       rounded-xl 
+      aspect-square 
       h-[70px] 
       w-[70px]`}>
       <div
