@@ -50,6 +50,9 @@ export default function RootLayout({children}) {
 
   return (
     <html lang="pt-br">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
       <body
         className={`${defaultFont.className} bg-no-repeat bg-center bg-cover h-screen`}
         style={{backgroundImage: `url(${getBackgroundImage()})`}}

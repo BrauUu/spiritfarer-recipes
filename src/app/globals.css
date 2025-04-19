@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  h1 {
+    @apply text-2xl md:text-4xl;
+  }
+
+  h2 {
+    @apply text-xl md:text-[28px];
+  }
+  h1, h2, h3 {
+    @apply font-medium font-[family-name:var(--font-title)]
+  }
+
+  body{
+    @apply text-base md:text-xl font-normal text-[var(--primary-text)]
+  }
+
+}
+
 * {
   margin: 0;
   line-height: 1.15;
@@ -28,25 +46,4 @@
   --font-title: 'Lora';
   --font-default: 'Nunito';
 
-}
-
-body{
-
-  font-size: 20px;
-  font-weight: 400;
-
-  color: var(--primary-text);
-}
-
-h1 {
-  font-size: 36px;
-}
-
-h2 {
-  font-size: 28px;
-}
-
-h1, h2, h3 {
-  font-family: var(--font-title);
-  font-weight: 500;
 }

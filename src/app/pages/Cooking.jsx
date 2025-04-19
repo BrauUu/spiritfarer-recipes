@@ -45,6 +45,7 @@ export default function Cooking({ changeActualScreen }) {
     const [selectedIngredients, setSelectedIngredients] = useState([])
 
     const [selectedType, setSelectedType] = useState("Grãos")
+    const selectedTypeId = useRef(1)
     const [filteredIngredientsList, setFilteredIngredientsList] = useState([])
 
     const metadata = {
@@ -114,7 +115,10 @@ export default function Cooking({ changeActualScreen }) {
             'ArrowDown': () => changeActualIngredient(4, true),
             'KeyE': () => addIngredientToRecipe(actualIngredientRef.current),
             'Escape': () => removeIngredientFromRecipe(actualIngredientRef.current),
-            'KeyR': () => cookRecipe()
+            'KeyR': () => cookRecipe(),
+            'Digit1': () => changeSelectedTypeById(-1),
+            'Digit2': () => changeSelectedTypeById(1),
+            'KeyQ': () => changeActualScreen()
         }
 
         function handleKeydown(event) {
@@ -195,16 +199,31 @@ export default function Cooking({ changeActualScreen }) {
         });
     }
 
+    function changeSelectedTypeById(num) {
+        const temp = selectedTypeId.current + num
+        if (temp < 1 || temp > 5) {
+            return
+        }
+        selectedTypeId.current = temp
+        icons.forEach((icon) => {
+            if (icon.id == selectedTypeId.current) {
+                setSelectedType(icon.name)
+                return
+            }
+        })
+    }
+
     return (
         <div className="w-full h-full bg-fade">
             {
                 isLoading ?
                     <Loading />
                     :
-                    <div className="h-full flex flex-row items-center pl-[50%]">
-                        <LongBox title='Ingredientes' className={'translate-x-[-50%]'}>
+                    <div className="h-full w-full flex justify-center lg:flex-row flex-col items-center xl:pl-[50%] gap-x-10">
+                        <LongBox title='Ingredientes' className={'xl:translate-x-[-50%]'}>
                             <div className="px-6 flex flex-col grow">
                                 <div className="h-14 mx-4 flex flex-row justify-around items-center">
+                                    <Key char={'1'} size={'lg'}></Key>
                                     {
                                         icons.map((icon) => {
                                             return (
@@ -217,18 +236,25 @@ export default function Cooking({ changeActualScreen }) {
                                                     width={36}
                                                     height={36}
                                                     key={icon.id}
+                                                    id={icon.id}
                                                     src={icon.src}
                                                     name={icon.name}
-                                                    onClick={(event) => setSelectedType(event.target.attributes.name.value)}
+                                                    onClick={
+                                                        (event) => {
+                                                            setSelectedType(event.target.attributes.name.value)
+                                                            selectedTypeId.current = parseInt(event.target.attributes.id.value)
+                                                        }
+                                                    }
                                                     alt={icon.description}
                                                 ></Image>
                                             )
                                         })
                                     }
+                                    <Key char={'2'} size={'lg'}></Key>
                                 </div>
                                 <Line />
                                 <div className="w-full h-[282px] flex flex-col overflow-hidden items-center">
-                                    <div className="grid grid-cols-4-70 auto-rows-[70px] p-4 overflow-y-scroll gap-x-5 gap-y-2">
+                                    <div className="grid grid-cols-auto-max-70 justify-center w-full p-4 overflow-y-scroll gap-x-5 gap-y-2">
                                         {
                                             filteredIngredientsList.map((ingredient, i) => {
                                                 return <IngredientPrimary ingredient={ingredient} key={i} index={i} changeActualIngredient={changeActualIngredient} actualIngredientIndex={actualIngredientIndex}></IngredientPrimary>
@@ -248,8 +274,8 @@ export default function Cooking({ changeActualScreen }) {
 
                                                 <div>{actualIngredient.name}</div>
                                             </div>
-                                            <div className="flex grow items-center text-secondary">
-                                                <p className="text-center">{actualIngredient.description}</p>
+                                            <div className="flex grow items-center text-secondary justify-center">
+                                                <p className="text-center max-w-[400px]">{actualIngredient.description}</p>
                                             </div>
                                         </div>
                                         :
@@ -266,9 +292,16 @@ export default function Cooking({ changeActualScreen }) {
                                 </div>
                             </div>
                         </LongBox>
-                        <SmallBox className={'translate-x-[-60%]'} >
+                        <SmallBox className={'xl:translate-x-[-60%]'} >
                             <div
-                                className="flex flex-col items-center w-full px-6 pointer"
+                                className={`
+                                    flex flex-col items-center 
+                                    w-full 
+                                    px-6 pointer 
+                                    bg-primary-glass lg:bg-transparent
+                                    rounded-2xl border-t border-l border-solid border-secondary
+                                    lg:border-none    
+                                `}
                             >
                                 <h2 className="py-2">Cozinha</h2>
                                 <Line />
@@ -314,11 +347,12 @@ export default function Cooking({ changeActualScreen }) {
                             }
                         </AnimatePresence>
                         <div
-                            className="absolute top-1/2 left-0 translate-x-1/2 -translate-y-1/2 flex items-center cursor-pointer group"
+                            className="absolute top-1/2 left-0 xl:translate-x-1/2 translate-x-2 -translate-y-1/2 flex items-center cursor-pointer group"
                             onClick={() => changeActualScreen()}
                         >
-                            <svg className="fill-secondary group-hover:fill-neon group-hover:drop-shadow-neon rotate-180" height="50px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier"></g><g id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <path d="M8.489 31.975c-0.271 0-0.549-0.107-0.757-0.316-0.417-0.417-0.417-1.098 0-1.515l14.258-14.264-14.050-14.050c-0.417-0.417-0.417-1.098 0-1.515s1.098-0.417 1.515 0l14.807 14.807c0.417 0.417 0.417 1.098 0 1.515l-15.015 15.022c-0.208 0.208-0.486 0.316-0.757 0.316z"></path> </g></svg>
-                            <svg className="text-secondary group-hover:text-neon group-hover:drop-shadow-neon" height="50px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M22 4.84969V16.7397C22 17.7097 21.21 18.5997 20.24 18.7197L19.93 18.7597C18.29 18.9797 15.98 19.6597 14.12 20.4397C13.47 20.7097 12.75 20.2197 12.75 19.5097V5.59969C12.75 5.22969 12.96 4.88969 13.29 4.70969C15.12 3.71969 17.89 2.83969 19.77 2.67969H19.83C21.03 2.67969 22 3.64969 22 4.84969Z" fill="currentColor"></path> <path d="M10.7083 4.70969C8.87828 3.71969 6.10828 2.83969 4.22828 2.67969H4.15828C2.95828 2.67969 1.98828 3.64969 1.98828 4.84969V16.7397C1.98828 17.7097 2.77828 18.5997 3.74828 18.7197L4.05828 18.7597C5.69828 18.9797 8.00828 19.6597 9.86828 20.4397C10.5183 20.7097 11.2383 20.2197 11.2383 19.5097V5.59969C11.2383 5.21969 11.0383 4.88969 10.7083 4.70969ZM4.99828 7.73969H7.24828C7.65828 7.73969 7.99828 8.07969 7.99828 8.48969C7.99828 8.90969 7.65828 9.23969 7.24828 9.23969H4.99828C4.58828 9.23969 4.24828 8.90969 4.24828 8.48969C4.24828 8.07969 4.58828 7.73969 4.99828 7.73969ZM7.99828 12.2397H4.99828C4.58828 12.2397 4.24828 11.9097 4.24828 11.4897C4.24828 11.0797 4.58828 10.7397 4.99828 10.7397H7.99828C8.40828 10.7397 8.74828 11.0797 8.74828 11.4897C8.74828 11.9097 8.40828 12.2397 7.99828 12.2397Z" fill="currentColor"></path> </g></svg>
+                            <Key char={'Q'} size={'lg'} className={"hidden"}></Key>
+                            <svg className="fill-secondary group-hover:fill-neon group-hover:drop-shadow-neon rotate-180 " height="50px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier"></g><g id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <path d="M8.489 31.975c-0.271 0-0.549-0.107-0.757-0.316-0.417-0.417-0.417-1.098 0-1.515l14.258-14.264-14.050-14.050c-0.417-0.417-0.417-1.098 0-1.515s1.098-0.417 1.515 0l14.807 14.807c0.417 0.417 0.417 1.098 0 1.515l-15.015 15.022c-0.208 0.208-0.486 0.316-0.757 0.316z"></path> </g></svg>
+                            <svg className="text-secondary group-hover:text-neon group-hover:drop-shadow-neon hidden xl:block" height="50px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M22 4.84969V16.7397C22 17.7097 21.21 18.5997 20.24 18.7197L19.93 18.7597C18.29 18.9797 15.98 19.6597 14.12 20.4397C13.47 20.7097 12.75 20.2197 12.75 19.5097V5.59969C12.75 5.22969 12.96 4.88969 13.29 4.70969C15.12 3.71969 17.89 2.83969 19.77 2.67969H19.83C21.03 2.67969 22 3.64969 22 4.84969Z" fill="currentColor"></path> <path d="M10.7083 4.70969C8.87828 3.71969 6.10828 2.83969 4.22828 2.67969H4.15828C2.95828 2.67969 1.98828 3.64969 1.98828 4.84969V16.7397C1.98828 17.7097 2.77828 18.5997 3.74828 18.7197L4.05828 18.7597C5.69828 18.9797 8.00828 19.6597 9.86828 20.4397C10.5183 20.7097 11.2383 20.2197 11.2383 19.5097V5.59969C11.2383 5.21969 11.0383 4.88969 10.7083 4.70969ZM4.99828 7.73969H7.24828C7.65828 7.73969 7.99828 8.07969 7.99828 8.48969C7.99828 8.90969 7.65828 9.23969 7.24828 9.23969H4.99828C4.58828 9.23969 4.24828 8.90969 4.24828 8.48969C4.24828 8.07969 4.58828 7.73969 4.99828 7.73969ZM7.99828 12.2397H4.99828C4.58828 12.2397 4.24828 11.9097 4.24828 11.4897C4.24828 11.0797 4.58828 10.7397 4.99828 10.7397H7.99828C8.40828 10.7397 8.74828 11.0797 8.74828 11.4897C8.74828 11.9097 8.40828 12.2397 7.99828 12.2397Z" fill="currentColor"></path> </g></svg>
                         </div>
                     </div >
             }

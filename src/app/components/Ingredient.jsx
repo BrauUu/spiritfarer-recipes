@@ -6,6 +6,7 @@ export const IngredientPrimary = ({ index, ingredient, changeActualIngredient, a
     <div className={`
       ${index == actualIngredientIndex ? '' : 'border-secondary-neon border-[1px] border-solid '} 
       rounded-xl 
+      aspect-square 
       h-[70px] 
       w-[70px]`}>
       <div
@@ -102,7 +103,7 @@ export const IngredientSecondary = ({ ingredient }) => {
 
   return (
     <div className={`flex flex-col justify-start items-center`}>
-      <div className="border-secondary-neon border-[1px] border-solid mb-2 rounded-xl h-[70px] w-[70px]">
+      <div className="border-secondary-neon border-[1px] border-solid md:mb-2 rounded-xl h-16 md:h-[70px] aspect-square">
         <div
           className="flex justify-center items-center rounded-full w-full h-full bg-[radial-gradient(circle,_var(--secondary-bg)_10%,_transparent_70%)]"
         >
