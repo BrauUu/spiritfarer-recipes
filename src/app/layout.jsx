@@ -36,7 +36,6 @@ export default function RootLayout({children}) {
   const getBackgroundImage = () => {
     const date = new Date()
     const hour = date.getHours()
-    console.log(hour)
     if (hour >= 5 && hour <= 7) {
       return backgroundDawn.src
     }
