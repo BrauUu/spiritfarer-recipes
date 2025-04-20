@@ -222,13 +222,13 @@ export default function Cooking({ changeActualScreen }) {
                     <div className="h-full w-full flex justify-center lg:flex-row flex-col items-center xl:pl-[50%] gap-x-10">
                         <LongBox title='Ingredientes' className={'xl:translate-x-[-50%]'}>
                             <div className="px-6 flex flex-col grow">
-                                <div className="h-14 mx-4 flex flex-row justify-around items-center">
+                                <div className="h-14 lg:mx-4 flex flex-row justify-around items-center">
                                     <Key char={'1'} size={'lg'}></Key>
                                     {
                                         icons.map((icon) => {
                                             return (
                                                 <Image
-                                                    className={`h-14 w-auto cursor-pointer px-4 py-3 filter`}
+                                                    className={`h-8 lg:h-12 w-auto cursor-pointer px-2 py-1 lg:px-3 lg:py-2 filter`}
                                                     style={
                                                         selectedType == icon.name ?
                                                             { filter: 'invert(99%) sepia(96%) saturate(735%) hue-rotate(328deg) brightness(105%) contrast(99%) drop-shadow(0 0 8px var(--primary-neon-shadow))' }
