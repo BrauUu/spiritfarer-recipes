@@ -19,7 +19,7 @@ export default function App() {
   if (!actualScreen) return null
 
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="min-h-screen flex justify-center items-center">
       <Provider>
         {actualScreen === "recipes" ? (
           <Recipes changeActualScreen={changeActualScreen} />

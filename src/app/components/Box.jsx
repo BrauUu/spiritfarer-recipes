@@ -134,7 +134,7 @@ const SmallBox = ({children, className}) => {
                 flex
                 lg:w-[320px]
                 p-4
-                h-[225px]
+                min-h-[225px]
                 flex-col
                 items-center
                 lg:shadow-neon
