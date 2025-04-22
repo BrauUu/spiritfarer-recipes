@@ -3,12 +3,11 @@ const SIZES = {
     'lg' : 'h-7 w-7 text-base rounded-md'
 }
 
-export default function Key({ char, label, size, className }) {
+export default function Key({ char, label, size }) {
     return (
-        <div className="flex flex-row gap-2">
+        <div className="lg:flex hidden flex-row gap-2 ">
             <div className={`
-                flex 
-                md:flex
+                flex
                 items-center 
                 justify-center 
                 text-gray-300 
@@ -19,7 +18,6 @@ export default function Key({ char, label, size, className }) {
                 outline 
                 outline-black 
                 ${SIZES[size||'md']}
-                ${className}
             `}>
                 {char}
             </div>
