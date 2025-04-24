@@ -281,14 +281,14 @@ export default function Cooking({ changeActualScreen }) {
                                                 <div>{actualIngredient.name}</div>
                                             </div>
                                             <div className="flex grow items-center text-secondary justify-center">
-                                                <p className="text-center max-w-[400px]">{actualIngredient.description}</p>
+                                                <p className="py-3 text-center max-w-[400px]">{actualIngredient.description}</p>
                                             </div>
                                         </div>
                                         :
                                         undefined
                                 }
                             </div>
-                            <div className="h-14 w-full flex flex-col items-center">
+                            <div className="h-14 w-full hidden lg:flex flex-col items-center">
                                 <div className="w-3/4 flex flex-col items-end">
                                     <Line />
                                     <div className="flex flex-row py-3 gap-3">
@@ -340,7 +340,7 @@ export default function Cooking({ changeActualScreen }) {
                         </SmallBox>
                         <AnimatePresence>
                             {isAlertVisible.current ?
-                                <div className="bg-fade h-full w-full absolute top-0 left-0">
+                                <div className="bg-fade h-screen w-screen absolute top-0 left-0">
                                     <div className="absolute top-[10%] left-1/2 translate-x-[-50%]">
                                         <motion.div
                                             initial={{ opacity: 0, scale: 0 }}
