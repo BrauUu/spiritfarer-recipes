@@ -220,7 +220,7 @@ export default function Cooking({ changeActualScreen }) {
     }
 
     return (
-        <div className="w-full h-full bg-fade">
+        <div className="h-screen w-full bg-fade">
             {
                 isLoading ?
                     <Loading />
