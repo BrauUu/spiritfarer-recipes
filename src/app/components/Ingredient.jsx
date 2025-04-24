@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
-export const IngredientPrimary = ({ index, ingredient, changeActualIngredient, actualIngredientIndex }) => {
+export const IngredientPrimary = ({ index, ingredient, changeActualIngredient, actualIngredientIndex, addIngredientToRecipeByClicking }) => {
   return (
     <div className={`
       ${index == actualIngredientIndex ? '' : 'border-secondary-neon border-[1px] border-solid '} 
@@ -20,7 +20,10 @@ export const IngredientPrimary = ({ index, ingredient, changeActualIngredient, a
           h-full
           ${index == actualIngredientIndex ? 'active bg-neon rounded-full shadow-neon-lg' : 'bg-[radial-gradient(circle,_var(--secondary-bg)_10%,_transparent_70%)]'}  
         `}
-        onClick={() => changeActualIngredient(index)}
+        onClick={() => {
+          addIngredientToRecipeByClicking(ingredient)
+          changeActualIngredient(index)}
+        }
       >
         {
           ingredient ?
@@ -41,9 +44,9 @@ export const IngredientPrimary = ({ index, ingredient, changeActualIngredient, a
   )
 }
 
-export const IngredientBox = ({ ingredient }) => {
+export const IngredientBox = ({ ingredient, removeIngredientFromRecipe }) => {
   return (
-    <div className="border-secondary-neon border-[1px] border-solid  rounded-xl h-[70px] w-[70px]">
+    <div className="border-secondary-neon border-[1px] border-solid  rounded-xl h-[70px] w-[70px]" onClick={() => removeIngredientFromRecipe(ingredient)}>
       <div
         className={`
       flex 

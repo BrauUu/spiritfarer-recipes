@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function NewRecipe({recipe}) {
 
   return (
-   <div className='h-[160px] w-[440px] bg-primary flex items-center flex-col border-neon border-solid border-y-[1px]'>
+   <div className='h-[160px] w-[440px] max-w-[90vw] bg-primary flex items-center flex-col border-neon border-solid border-y-[1px]'>
     <div className='h-12 flex items-center justify-center w-full border-neon border-solid border-b-[1px] color-neon text-xl font-bold'>
         Receita preparada!
     </div>
