@@ -213,6 +213,12 @@ export default function Cooking({ changeActualScreen }) {
         })
     }
 
+    function addIngredientToRecipeByClicking(ingredient) {
+        if(ingredient == actualIngredient){
+            addIngredientToRecipe(actualIngredient)
+        }
+    }
+
     return (
         <div className="w-full h-full bg-fade">
             {
@@ -257,7 +263,7 @@ export default function Cooking({ changeActualScreen }) {
                                     <div className="grid grid-cols-auto-max-70 justify-center w-full p-4 overflow-y-scroll gap-x-5 gap-y-2">
                                         {
                                             filteredIngredientsList.map((ingredient, i) => {
-                                                return <IngredientPrimary ingredient={ingredient} key={i} index={i} changeActualIngredient={changeActualIngredient} actualIngredientIndex={actualIngredientIndex}></IngredientPrimary>
+                                                return <IngredientPrimary ingredient={ingredient} key={i} index={i} changeActualIngredient={changeActualIngredient} actualIngredientIndex={actualIngredientIndex} addIngredientToRecipeByClicking={addIngredientToRecipeByClicking}></IngredientPrimary>
                                             })
                                         }
                                     </div>
@@ -309,8 +315,8 @@ export default function Cooking({ changeActualScreen }) {
                                 <h2 className="py-2">Cozinha</h2>
                                 <Line />
                                 <div className="flex justify-center flex-row py-4 gap-6 ">
-                                    <IngredientBox ingredient={selectedIngredients[0]}></IngredientBox>
-                                    <IngredientBox ingredient={selectedIngredients[1]}></IngredientBox>
+                                    <IngredientBox ingredient={selectedIngredients[0]} removeIngredientFromRecipe={removeIngredientFromRecipe}></IngredientBox>
+                                    <IngredientBox ingredient={selectedIngredients[1]} removeIngredientFromRecipe={removeIngredientFromRecipe}></IngredientBox>
                                 </div>
                                 <div className="
                                     p-[5px]
