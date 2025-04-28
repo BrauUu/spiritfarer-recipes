@@ -22,7 +22,8 @@ export const IngredientPrimary = ({ index, ingredient, changeActualIngredient, a
         `}
         onClick={() => {
           addIngredientToRecipeByClicking(ingredient)
-          changeActualIngredient(index)}
+          changeActualIngredient(index)
+        }
         }
       >
         {
@@ -46,7 +47,13 @@ export const IngredientPrimary = ({ index, ingredient, changeActualIngredient, a
 
 export const IngredientBox = ({ ingredient, removeIngredientFromRecipe }) => {
   return (
-    <div className="border-secondary-neon border-[1px] border-solid  rounded-xl h-[70px] w-[70px]" onClick={() => removeIngredientFromRecipe(ingredient)}>
+    <div className="border-secondary-neon border-[1px] border-solid  rounded-xl h-[70px] w-[70px]"
+      onClick={() => {
+        if(ingredient){
+          removeIngredientFromRecipe(ingredient)
+        }
+      }}
+    >
       <div
         className={`
       flex 
