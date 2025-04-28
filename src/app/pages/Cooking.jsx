@@ -220,12 +220,12 @@ export default function Cooking({ changeActualScreen }) {
     }
 
     return (
-        <div className="h-screen w-full bg-fade">
+        <div className="h-screen w-full">
             {
                 isLoading ?
                     <Loading />
                     :
-                    <div className="h-screen w-full flex xl:justify-start justify-center lg:flex-row flex-col items-center xl:pl-[50%] xl:gap-x-0 gap-x-10">
+                    <div className="bg-fade h-screen w-full flex xl:justify-start justify-center lg:flex-row flex-col items-center xl:pl-[50%] xl:gap-x-0 gap-x-10">
                         <LongBox title='Ingredientes' className={'xl:translate-x-[-50%]'}>
                             <div className="px-6 flex flex-col grow">
                                 <div className="h-14 lg:mx-4 flex flex-row justify-around items-center">
