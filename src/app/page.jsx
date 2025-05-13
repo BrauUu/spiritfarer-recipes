@@ -10,10 +10,7 @@ import MusicController from "./components/MusicController";
 
 import atSeaBgMusic from '../../public/songs/atSea.mp3'
 
-const backgroundMusic = new Audio(atSeaBgMusic);
-backgroundMusic.volume = 0.3;
-backgroundMusic.loop = true
-document.body.appendChild(backgroundMusic)
+let backgroundMusic
 
 export default function App() {
 
@@ -33,6 +30,10 @@ export default function App() {
         setIsMusicActive(false)
       }
     };
+    backgroundMusic = new Audio(atSeaBgMusic);
+    backgroundMusic.volume = 0.3;
+    backgroundMusic.loop = true
+    document.body.appendChild(backgroundMusic)
     backgroundMusic.addEventListener("canplaythrough", playMusic)
   }, [])
 
@@ -40,7 +41,7 @@ export default function App() {
     setActualScreen((prev) => (prev === "recipes" ? "cooking" : "recipes"));
   }
 
-  function changeMusicState(){ 
+  function changeMusicState() {
     if (isMusicActive) {
       backgroundMusic.muted = true;
     } else {
@@ -60,7 +61,7 @@ export default function App() {
         ) : (
           <Cooking changeActualScreen={changeActualScreen} />
         )}
-        <MusicController isMusicActive={isMusicActive} changeMusicState={changeMusicState}/>
+        <MusicController isMusicActive={isMusicActive} changeMusicState={changeMusicState} />
       </Provider>
     </div>
   );
