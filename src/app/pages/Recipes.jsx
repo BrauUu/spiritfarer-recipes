@@ -118,7 +118,7 @@ export default function Recipes({ changeActualScreen }) {
                 isLoading ?
                     <Loading />
                     :
-                    <div className="min-h-screen bg-fade flex justify-center items-center">
+                    <div className="min-h-svh bg-fade flex justify-center items-center">
                         <Box>
                             <div className="md:w-[55%] md:h-full md:max-h-full flex flex-col w-full max-h-[calc(100%-380px)]">
                                 <Title type='primary' text='Receitas' classes='text-left' />

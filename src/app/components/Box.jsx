@@ -14,7 +14,7 @@ const Box = ({ children }) => {
             md:border-neon-glass
             md:shadow-neon-glass
             w-screen
-            h-screen
+            h-svh
         `}
         >
             <div
