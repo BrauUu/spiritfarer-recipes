@@ -7,7 +7,6 @@ export function Provider({ children }) {
     const [dishesList, setDishesList] = useState([])
     const [ingredientsList, setIngredientsList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    const [isPlaying, setIsPlaying] = useState(false);
 
     return (
         <Context.Provider value={
@@ -18,8 +17,6 @@ export function Provider({ children }) {
                 setIngredientsList,
                 isLoading,
                 setIsLoading,
-                isPlaying, 
-                setIsPlaying
             }
         }>
             {children}
