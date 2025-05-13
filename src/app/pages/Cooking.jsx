@@ -182,6 +182,7 @@ export default function Cooking({ changeActualScreen }) {
         isAlertVisible.current = true
         setTimeout(() => {
             setCookedDish({})
+            setSelectedIngredients([])
             isAlertVisible.current = false
         }, 3000);
 
@@ -220,12 +221,12 @@ export default function Cooking({ changeActualScreen }) {
     }
 
     return (
-        <div className="h-screen w-full bg-fade">
+        <div className="h-svh w-full">
             {
                 isLoading ?
                     <Loading />
                     :
-                    <div className="h-screen w-full flex xl:justify-start justify-center lg:flex-row flex-col items-center xl:pl-[50%] xl:gap-x-0 gap-x-10">
+                    <div className="bg-fade h-svh w-full flex xl:justify-start justify-center lg:flex-row flex-col items-center xl:pl-[50%] xl:gap-x-0 gap-x-10">
                         <LongBox title='Ingredientes' className={'xl:translate-x-[-50%]'}>
                             <div className="px-6 flex flex-col grow">
                                 <div className="h-14 lg:mx-4 flex flex-row justify-around items-center">
@@ -260,7 +261,7 @@ export default function Cooking({ changeActualScreen }) {
                                 </div>
                                 <Line />
                                 <div className="w-full h-[282px] flex flex-col overflow-hidden items-center">
-                                    <div className="grid grid-cols-auto-max-70 justify-center w-full p-4 overflow-y-scroll gap-x-5 gap-y-2">
+                                    <div className="grid grid-cols-auto-max-70 justify-center w-full p-4 overflow-y-auto gap-x-5 gap-y-2">
                                         {
                                             filteredIngredientsList.map((ingredient, i) => {
                                                 return <IngredientPrimary ingredient={ingredient} key={i} index={i} changeActualIngredient={changeActualIngredient} actualIngredientIndex={actualIngredientIndex} addIngredientToRecipeByClicking={addIngredientToRecipeByClicking}></IngredientPrimary>
@@ -340,7 +341,7 @@ export default function Cooking({ changeActualScreen }) {
                         </SmallBox>
                         <AnimatePresence>
                             {isAlertVisible.current ?
-                                <div className="bg-fade h-screen w-screen absolute top-0 left-0">
+                                <div className="bg-fade h-svh w-screen absolute top-0 left-0">
                                     <div className="absolute top-[10%] left-1/2 translate-x-[-50%]">
                                         <motion.div
                                             initial={{ opacity: 0, scale: 0 }}
