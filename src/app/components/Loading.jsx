@@ -19,14 +19,14 @@ export default function InitialLoading() {
         }}
         className='min-w-[25%]'
       >
-        <Image
+        <img
           className='w-full drop-shadow-md'
           width={512}
           height={279}
           alt="Logo do jogo Spiritfarer"
           src={"/images/loading.png"}
         >
-        </Image>
+        </img>
       </motion.div>
     </div>
   );

@@ -9,14 +9,14 @@ export default function DishDetails({ selectedDish }) {
     <div className="w-full gap-2 px-2 md:py-8 flex flex-col justify-between items-center text-center py-2">
       <div className="w-full flex flex-col items-center">
         <div className="w-full flex flex-col items-center py-2 md:py-4">
-          <Image
+          <img
             alt={'Uma imagem de um delicioso prato de ' + selectedDish.name}
             className="h-16 md:h-[80px] w-auto"
             src={selectedDish.src}
             height={100}
             width={100}
           >
-          </Image>
+          </img>
           <Title type='secondary' text={selectedDish.name} />
         </div>
         <div className="text-secondary font-light flex flex-col gap-y-2 pt-2 ">
