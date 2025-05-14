@@ -234,7 +234,7 @@ export default function Cooking({ changeActualScreen }) {
                                     {
                                         icons.map((icon) => {
                                             return (
-                                                <Image
+                                                <img
                                                     className={`h-10 lg:h-12 w-auto cursor-pointer px-2 py-1 lg:px-3 lg:py-2 filter`}
                                                     style={
                                                         selectedType == icon.name ?
@@ -253,7 +253,7 @@ export default function Cooking({ changeActualScreen }) {
                                                         }
                                                     }
                                                     alt={icon.description}
-                                                ></Image>
+                                                ></img>
                                             )
                                         })
                                     }
