@@ -15,6 +15,7 @@ export default function DishDetails({ selectedDish }) {
             src={selectedDish.src}
             height={100}
             width={100}
+            priority={true}
           >
           </Image>
           <Title type='secondary' text={selectedDish.name} />

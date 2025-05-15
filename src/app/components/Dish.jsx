@@ -24,6 +24,7 @@ export default function Dish({ index, dish, setSelectedDishData, selectedDishInd
         height={100}
         src={dish.src}
         alt={'Uma imagem de um delicioso prato de ' + dish.name}
+        priority={true}
       ></Image>
     </div>
   )

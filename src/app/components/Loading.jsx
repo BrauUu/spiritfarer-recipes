@@ -25,6 +25,7 @@ export default function InitialLoading() {
           height={279}
           alt="Logo do jogo Spiritfarer"
           src={"/images/loading.png"}
+          priority={true}
         >
         </Image>
       </motion.div>

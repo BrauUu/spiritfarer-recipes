@@ -246,6 +246,7 @@ export default function Cooking({ changeActualScreen }) {
                                                     id={icon.id}
                                                     src={icon.src}
                                                     name={icon.name}
+                                                    priority={true}
                                                     onClick={
                                                         (event) => {
                                                             setSelectedType(event.target.attributes.name.value)

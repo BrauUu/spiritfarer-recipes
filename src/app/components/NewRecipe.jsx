@@ -11,7 +11,7 @@ export default function NewRecipe({recipe}) {
         Receita preparada!
     </div>
     <div className='h-28 flex flex-row items-center gap-10 font-semibold text-2xl'>
-        <Image className={`max-h-[70%] w-auto`} src={recipe.src} alt={recipe.name} width={100} height={100} />
+        <Image className={`max-h-[70%] w-auto`} src={recipe.src} alt={recipe.name} width={100} height={100} priority={true}/>
         <div>
             {recipe.name}
         </div>
