@@ -18,13 +18,14 @@ export default function Dish({ index, dish, setSelectedDishData, selectedDishInd
       ${index == selectedDishIndex ? 'active bg-neon rounded-full shadow-neon-lg' : ''}
     `}
       onClick={() => setSelectedDishData(index, dish)}>
-      <img
+      <Image
         className={`max-h-[85%] w-auto z-0`}
         width={100}
         height={100}
         src={dish.src}
         alt={'Uma imagem de um delicioso prato de ' + dish.name}
-      ></img>
+        loading={'eager'}
+      ></Image>
     </div>
   )
 }

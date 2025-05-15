@@ -28,7 +28,7 @@ export const IngredientPrimary = ({ index, ingredient, changeActualIngredient, a
       >
         {
           ingredient ?
-            <img
+            <Image
               className='max-h-[70%] w-auto h-auto max-w-[70%]'
               width={100}
               height={100}
@@ -36,7 +36,7 @@ export const IngredientPrimary = ({ index, ingredient, changeActualIngredient, a
               src={ingredient.src}
               loading='eager'
               decoding={'sync'}
-            ></img>
+            ></Image>
             :
             undefined
         }
@@ -68,7 +68,7 @@ export const IngredientBox = ({ ingredient, removeIngredientFromRecipe }) => {
       >
         {
           ingredient ?
-            <img
+            <Image
               className='max-h-[70%] w-auto h-auto max-w-[70%]'
               width={100}
               height={100}
@@ -76,7 +76,7 @@ export const IngredientBox = ({ ingredient, removeIngredientFromRecipe }) => {
               src={ingredient.src}
               loading='eager'
               decoding={'sync'}
-            ></img>
+            ></Image>
             :
             undefined
         }
@@ -119,7 +119,7 @@ export const IngredientSecondary = ({ ingredient }) => {
         >
           {
             ingredientImage ?
-              <img
+              <Image
                 className='max-h-[70%] w-auto h-auto max-w-[70%]'
                 width={100}
                 height={100}
@@ -127,7 +127,7 @@ export const IngredientSecondary = ({ ingredient }) => {
                 src={ingredientImage}
                 loading='eager'
                 decoding={'sync'}
-              ></img>
+              ></Image>
               :
               undefined
           }
