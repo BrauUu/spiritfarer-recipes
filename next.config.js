@@ -25,6 +25,7 @@ const nextConfig = {
         search: '',
       },
     ],
+    minimumCacheTTL: 2678400
   },
 };
 
