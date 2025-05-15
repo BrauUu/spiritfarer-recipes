@@ -34,8 +34,6 @@ export const IngredientPrimary = ({ index, ingredient, changeActualIngredient, a
               height={100}
               alt={`Uma imagem de um(a) ${ingredient.name}`}
               src={ingredient.src}
-              loading='eager'
-              decoding={'sync'}
             ></Image>
             :
             undefined
@@ -74,8 +72,6 @@ export const IngredientBox = ({ ingredient, removeIngredientFromRecipe }) => {
               height={100}
               alt={`Uma imagem de um(a) ${ingredient.name}`}
               src={ingredient.src}
-              loading='eager'
-              decoding={'sync'}
             ></Image>
             :
             undefined
@@ -125,8 +121,6 @@ export const IngredientSecondary = ({ ingredient }) => {
                 height={100}
                 alt={`Uma imagem de um(a) ${ingredient.name}`}
                 src={ingredientImage}
-                loading='eager'
-                decoding={'sync'}
               ></Image>
               :
               undefined
