@@ -67,6 +67,8 @@ export default function Cooking({ changeActualScreen }) {
         async function fetchData() {
             try {
                 const response = await api.getAllIngredients()
+                if(response.status != 200)
+                    throw Error("Erro na requisição")
                 const data = await response.json()
                 setIngredientsList(data)
                 localStorage.setItem('ingredientsList', JSON.stringify(data))
